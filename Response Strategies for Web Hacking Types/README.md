@@ -1,0 +1,12 @@
+- Brute Force
+- Command Injection
+- CSRF (Cross Site Request Forgery)
+- File Inclusion
+- File Upload
+- Insecure CAPTCHA
+- SQL Injection
+- Blind SQL Injection
+- Weak Session IDs
+- DOM XSS
+- Reflected XSS
+- Stored XSS
