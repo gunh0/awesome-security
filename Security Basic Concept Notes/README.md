@@ -1,3 +1,5 @@
+# Security Basic Concept Notes
+
 - 리눅스에서 PID 1인 프로세스는 init이며, 모든 다른 프로세스들은 init 프로세스의 자손들이 된다.
 
 ---------
@@ -42,3 +44,32 @@ find / -user root -perm -2000   -> SetGID
 
 - HEAP 영역은 malloc(), calloc() 등으로 프로그래머가 자율적으로 메모리 크기를 할당할 수 있는 영역이다.
   - 위 함수들로 할당된 영역은 동적할당 영역으로 free()함수로 할당된 영역을 반납해줘야한다.
+
+-----
+
+- SMTP : Simple Mail Transfer Protocol
+
+  전자메일의 안정적인 전송을 위해 제안된 프로토콜
+
+- POP3와 IMAP은 메일은 수신하기 위한 프로토콜
+
+- SNMP : Simple Network Management Protocol
+
+  TCP/IP의 망 관리 프로토콜
+
+---
+
+- 트로이목마(Netbus)
+
+  - 일반 프로그램에 악의적인 루틴을 추가하여 그 프로그램을 사용할 때 본래의 기능 이외에 악의적인 기능까지 은밀히 수행하도록 하는 공격
+
+  - 사용자 암호를 도출하기 위해서 합법적인 로그인(login) 프로그램으로 가장하고 정상적인 로그인 순서와 대화를 모방하여 작성될 수 있다.
+
+-----
+
+특수권한(3bit) - user(3bit) - group(3bit) - other(3bit)
+
+4			2			1			|	4	2	1	|	4	2	1	|	4	2	1
+
+suid	sgid	sticky-bit	|	r	w	x	|	r	w	x	|	r	w	x
+
