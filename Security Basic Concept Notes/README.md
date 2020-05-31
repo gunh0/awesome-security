@@ -8,7 +8,11 @@
 
 Every Windows user, computer, or service account has a unique alphanumeric identifier called the security ID (SID). Windows security-related processes, such as authentication, authorization, delegation, and auditing, use SIDs to uniquely identify security principals. Because SIDs are used by system processes, the format of a SID—unlike the format of a logon name—isn't user- or administrator-friendly.
 
-To illustrate, let us analyze an example SID that I retrieved from my test Active Directory (AD) system: `S-1-5-21-4064627337-2434140041-2375368561-1036`. All SID fields have a specific meaning; so, for the above sample SID:
+To illustrate, let us analyze an example SID that I retrieved from my test Active Directory (AD) system: 
+
+`S-1-5-21-4064627337-2434140041-2375368561-1036`
+
+All SID fields have a specific meaning; so, for the above sample SID:
 
 > **S | The initial S identifies the following string as a SID.**
 > **1 | The revision level, or version, of the SID specification. To date, this has never changed and has always been 1.**
