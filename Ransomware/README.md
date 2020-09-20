@@ -72,7 +72,7 @@
 
 <br/>
 
-### Ransomware Types
+### ■ Ransomware Types
 
 > There are mainly two types of ransomware: crypto and locker ransomware. However, ransomware belongs to the digital extortion category of cybercrime, which also contains other types of cyber crimes that aim to illicitly acquire or deny access to personal data in exchange for a monetary gain.
 
@@ -82,14 +82,14 @@
 
 <br/>
 
-#### **Locker Ransomware**
+#### **▷ Locker Ransomware**
 
 Locker ransomware works by preventing the victim from reaching their personal files through denying access to computing resources (e.g., locking the desktop or preventing the victim from logging in) and then demanding a ransom to regain access.
 Compared with crypto ransomware, typical locker ransomware types deny access to personal files using relatively simple techniques that can be overcome by any technical user; as a result, locker ransomware can be removed from the infected systems without affecting the underlying operating system and personal files.
 
 <br/>
 
-#### **Crypto Ransomware**
+#### **▷ Crypto Ransomware**
 
 This type of ransomware encrypts all personal data on the target machine, taking it hostage until the victim pays the ransom and obtains the decryption key from the attacker.
 
@@ -111,7 +111,7 @@ The majority of crypto ransomware infections will not damage the victim’s oper
 
 <br/>
 
-### Differences Between Ransomware and Other Malware Types
+### ■ Differences Between Ransomware and Other Malware Types
 
 >  Ransomware is a subtype of malware; however, there are many distinct characteristics that distinguish it from other malware types.
 
@@ -132,7 +132,7 @@ The majority of crypto ransomware infections will not damage the victim’s oper
 
 <br/>
 
-### Ransomware Symptoms
+### ■ Ransomware Symptoms
 
 > It is relatively easy to find out if you are affected by ransomware. The symptoms include the following:
 
@@ -153,10 +153,11 @@ The majority of crypto ransomware infections will not damage the victim’s oper
 
 <br/>
 
-### Primary Targets of Ransomware Attacks
+### ■ Primary Targets of Ransomware Attacks
 
 ```
-Before 2015, the majority of ransomware victims were individuals; however, in 2015, ransomware operators shifted their attention to target enterprises and academic organizations to acquire more guaranteed money from their attacks. In these cases, Microsoft Office and database files were the primary targets.
+Before 2015, the majority of ransomware victims were individuals; however, in 2015, ransomware operators shifted their attention to target enterprises and academic organizations to acquire more guaranteed money from their attacks.
+In these cases, Microsoft Office and database files were the primary targets.
 Enterprises are a big target of ransomware; however, anyone is subject to being a victim of such attacks such as celebrities, politicians, individuals, public and private organizations, and even charity and nonprofit organizations.
 Ransomware campaigns are sent in bulk (for example, sending spam e-mails with a link to download the ransomware) to infect as many devices as possible.
 In 2016, the healthcare industry became a top target of ransomware attacks for many reasons.
@@ -215,7 +216,7 @@ Datto의 '채널 랜섬웨어 보고서 2018 글로벌 상태'에 따르면 애�
 
 <br/>
 
-### Ransomware Families (The Most Prominent Ransomware Strains)
+### ■ Ransomware Families (The Most Prominent Ransomware Strains)
 
 ```
 Ransomware can be classified into groups using different criteria, for example, according to its function such as whether it is a locker or encryption ransomware.
@@ -228,13 +229,13 @@ Security experts prefer to classify ransomware into families according to its co
 
 <br/>
 
-#### Abaddon
+#### ▶ Abaddon
 
-![image-20200918155023439](README.assets/image-20200918155023439.png){:.alignleft}
+![image-20200918155023439](README.assets/image-20200918155023439.png)
 
 
 
-![image-20200918155051147](README.assets/image-20200918155051147.png){:.alignleft}
+![image-20200918155051147](README.assets/image-20200918155051147.png)
 
 
 
@@ -250,11 +251,11 @@ Security experts prefer to classify ransomware into families according to its co
 
 <br/>
 
-#### Sodinokibi (2019)
+#### ▶ Sodinokibi (2019)
 
 <br/>
 
-##### Sodinokibi ransomware can now encrypt open and locked files | May 10, 2020
+##### ▷ Sodinokibi ransomware can now encrypt open and locked files | May 10, 2020
 
 **By Lawrence Abrams**
 
@@ -301,7 +302,7 @@ Victims will have an easier time decrypting files after paying a ransom, but Sod
 
 <br/>
 
-#### GANDCRAB v5.0.2 (2018)
+#### ★ GANDCRAB v5.0.2 (2018)
 
 <br/>
 
@@ -309,7 +310,7 @@ Victims will have an easier time decrypting files after paying a ransom, but Sod
 
 <br/>
 
-#### Ryuk (2018)
+#### ▶ Ryuk (2018)
 
 ```
 Ryuk is a crypto ransomware specialized in targeted attacks against enterprises that can afford to pay its relatively big Bitcoin ransom (15 BTC to 50 BTC).
@@ -436,6 +437,161 @@ To make sure the malware is executed after reboot, Ryuk uses a straight forward 
 It will then try to elevate to *SeDebugPrivilege* so as to have extended capabilities in subsequent actions and prepare for injection by forming an array of structures. Each entry in the array represents a running process in the system and contains the process’ name, PID, and a number which represents the account type of its owner (as outlined in the figure below). After putting the aforementioned process list together, Ryuk will iterate over it and try to inject a code to each process’s address space, as long as its name is not “*explorer.exe*”, “*csrss.exe*” or “*lsaas.exe*”, or is not run by NT AUTHORITY.
 
 ![image-20200918154742465](README.assets/image-20200918154742465.png)
+
+**The Injection Method**
+
+Ryuk uses a rather basic injection technique, whereby it first gets a handle on the target process using *OpenProcess* and allocates a buffer in its address space using *VirtualAllocEx*. The allocated buffer would have the size of the malware’s image and would be required to be positioned at the same base address.
+
+The malware will then write its current virtual image content into it and create a thread that will carry out some actions, as described in the next section. Note that by writing the virtual image into a requested buffer with a predefined allocation base, and with the lack of a proper code relocation procedure, Ryuk is taking the risk that the requested address is not available for allocation, thus causing a potential failure in the execution of the injected code.
+
+![image-20200921075828256](README.assets/image-20200921075828256.png)
+
+**The Injected Code**
+
+The injected code holds the core functionality used by the ransomware for file encryption. It is started by decrypting a list of API function name strings using a predefined key and an array of the string lengths which is then used to dynamically load the corresponding functions.
+
+In order to ease the decryption process during analysis, we created an IDA Python script that will automatically decrypt these strings and rename the relevant variables. The script can be found in the Appendix below.
+
+Following this, the malware will attempt to write a dummy file to the Windows directory, which would only be allowed with Admin privileges. If the creation of the file failed, it will sleep for a while and attempt the same another five times. If failure persists beyond these attempts, Ryuk will simply terminate.
+
+If the file was successfully created, it will write two more files to a subfolder in the Windows directory. The first is a file named “PUBLIC” which contains an RSA Public key, and the second is “UNIQUE_ID_DO_NOT_REMOVE” that contains a hardcoded key. Both are leveraged for the purpose of encryption as outlined in the following section.
+
+<br/>
+
+**The Encryption Scheme**
+
+The ransomware uses a relatively straightforward three-tier trust model. At the root of the trust model, as is typical in robust ransomware implementations, is the global RSA key pair held by the attackers. The private key from this key pair is not visible to the victim at any point during infection.
+
+The second tier is a per-victim RSA keypair. Typically a ransomware would generate this keypair on-the-fly, and then immediately encrypt the resulting private key using the higher-tier global key. Instead, the ransomware comes with this keypair pre-embedded and the private key pre-encrypted. This is a somewhat unorthodox approach, which may be vulnerable to a ‘pay-once, decrypt-many’ attack if the same sample is used to infect multiple victims, or if the same keypair is embedded in multiple samples.  But given that a fresh key pair is generated for each new sample, it is a secure model.
+
+![image-20200921075900137](README.assets/image-20200921075900137.png)
+
+The third tier is a standard AES symmetric encryption key generated per victim file using the Win32API function CryptGenKey. The key is then exported using CryptExportKey, encrypted using the second-tier key, and the encrypted result appended to the encrypted file. In a truly extraordinary turn of events, the authors actually read the documentation of CryptExportKey and provided the second-tier key as the hExpKey parameter, which is there exactly to provide this functionality. Most ransomware exports the AES key in plain and then encrypts the result using CryptEncrypt, or some such.
+
+![image-20200921075918961](README.assets/image-20200921075918961.png)
+
+Once all cryptographic primitives are in place, the ransomware performs a standard recursive sweep of every drive and network share on the victim system, and encrypts every file and directory except for any file or directory containing text from a hardcoded whitelist, which includes “Windows”, “Mozilla”, “Chrome”, “RecycleBin” and “Ahnlab”. It’s clear why the attackers would want the victim’s web browser intact given that it may be required for reading the ransom note, purchasing cryptocurrency and so on. But it is less clear why the attackers are concerned with encrypting the victim’s copy of a South Korean endpoint protection product, especially given that this attack wasn’t even targeted at South Korean users.
+
+This bit in particular is one piece of a larger puzzle of how the HERMES ransomware came to be re-used and rebranded as “Ryuk” ransomware. Apart from the obvious re-labeling in the readme file and so on, there are subtle differences in the trust model.
+
+According to a report by Malwarebytes, the original HERMES actually generated the tier-two per-victim RSA keypairs, as opposed to embedding hard-coded copies in the malware samples. But the encryption function itself, including the encrypted file format and its associated unique “HERMES” file magic, are reproduced wholesale in the rebranded version; as is the check for “AhnLab”-related files, which isn’t even relevant to Ryuk’s intended victims.
+
+![image-20200921075948323](README.assets/image-20200921075948323.png)
+
+In addition to local drives, Ryuk will also try to encrypt network resources. First, it will start their enumeration by calling *WNetOpenEnum*, and then allocate a zero-initialized buffer. This buffer will be filled throughout a call to the *WNetEnumResource* function. If the enumerated resource is a container for other resources, the ransomware will call its network resources enumeration function recursively.
+
+For each network resource found by Ryuk, the resource’s name will be appended and separated with a semicolon to a list that will later be used to encrypt these network resources.
+
+Finally, Ryuk will destroy its encryption key and execute a .BAT file that will delete shadow copies and various backup files from the disk.
+
+![image-20200921080008302](README.assets/image-20200921080008302.png)
+
+**Following the Money**
+
+Ryuk ransomware has not been widely distributed. Similarly to its forefather, HERMES, it has only been used in targeted attacks, which makes it a lot harder to track the malware author’s activities and revenues. Almost each malware sample was provided a unique wallet and shortly after the ransom payment was made, the funds were divided and transmitted through multiple other accounts.
+
+However, examining the currency transactions directly from the wallet provided in the ransom note onwards exposed a pattern, which enabled us to pinpoint wallets that would most likely be used for monetization. We were also able to spot a connection between these wallets, as funds paid to them were transferred to several key wallets at a certain point. This may indicate that a coordinated operation, in which several companies have been carefully targeted, is currently taking place using the Ryuk ransomware.
+
+After a ransom payment was made to a preassigned wallet, some 25% of the funds (a round amount such as 10 or 12.5 BTC) are transferred to a new wallet. These funds can still be found at that same new wallet that was created for them. We can assume that these wallets will later be cashed out. The remaining amount, indeed the majority of the original amount, is also transferred to a new wallet; however, the remaining funds are split and relocated again – some 25% of it is transferred to a new wallet in which it would remain, with the other funds split again, and so on.
+
+Interestingly, several wallets were used more than others, as several transactions originating in different ransom payments were made to them. These key wallets were in fact the link between the original ransom payments, and enabled us to measure the extent of these coordinated targeted attacks delivering the Ryuk ransomware. The pattern we uncovered is presented in the chart below.
+
+![image-20200921080027512](README.assets/image-20200921080027512.png)
+
+**Conclusions**
+
+From the exploitation phase through to the encryption process and up to the ransom demand itself, the carefully operated Ryuk campaign is targeting enterprises that are capable of paying a lot of money in order to get back on track.
+
+Both the nature of the attack and the malware’s own inner workings tie Ryuk to the HERMES ransomware and arouse curiosity regarding the identity of the group behind it and its connection to the Lazarus Group. After succeeding with infecting and getting paid some $640,000, we believe that this is not the end of this campaign and that additional organizations are likely to fall victim to Ryuk.
+
+Check Point’s SandBlast Agent Anti-Ransomware product protects against Ryuk ransomware. Here is a forensics report of Ryuk, triggered by SandBlast Agent Anti-Ransomware.
+
+<br/>
+
+**Appendix**
+
+String decryption Python code:
+
+```python
+""" Ryuk strings decrypter
+This is an IDA Python based script which can be used to decrypt the encrypted
+API strings in recent Ryuk ransomware samples. After the decryption, the 
+script will rename the encrypted string in order to ease analysis.
+
+Ryuk sha-256: 8d3f68b16f0710f858d8c1d2c699260e6f43161a5510abb0e7ba567bd72c965b
+"""
+
+__author__  = "Itay Cohen, aka @megabeets_"
+__company__ = "Check Point Software Technologies Ltd"
+
+import idc
+from idaapi import *
+
+def decryptStrings (verbose = True):
+
+    encrypted_strings_array =   0x1400280D0
+    lengths_array =             0x1400208B0
+    num_of_encrypted_strings =  68
+    key =                       'bZIiQ'
+if verbose:
+        print ("[!] Starting to decrypt the strings\n\n")
+    	
+    # Iterate over the encrypted strings array
+    for i in range(num_of_encrypted_strings):
+
+        # Get the length of the encrypted string
+        string_length = idc.Dword(lengths_array + i*4)
+        
+        # Get the offset of the encrypted string
+        string_offset = encrypted_strings_array + i*50
+        
+        # Read  bytes from 
+        # For IDA version < 7, use get_many_bytes()
+        encrypted_buffer = get_bytes(string_offset, string_length)
+        decrypted_string = ''
+        
+        # Decrypt the bytes and save it to 
+        for idx, val in enumerate(encrypted_buffer):
+            decrypted_string += chr( ord(val) ^ ord(key [idx % len(key)]))
+        
+        # Set name for the string variable in IDA
+        idc.MakeName (string_offset, "dec_" + decrypted_string)
+        
+        # Print to the ouput window
+        if verbose:
+            print("0x%x : %s" % (string_offset, decrypted_string,))
+
+    if verbose:
+        print ("\n[!] Done.")
+        
+
+# Execute the decryption function
+decryptStrings()
+```
+
+<br/>
+
+**Ryuk Ransomware hashes (MD5):**
+
+c0202cf6aeab8437c638533d14563d35
+
+d348f536e214a47655af387408b4fca5
+
+958c594909933d4c82e93c22850194aa
+
+86c314bc2dc37ba84f7364acd5108c2b
+
+29340643ca2e6677c19e1d3bf351d654
+
+cb0c1248d3899358a375888bb4e8f3fe
+
+1354ac0d5be0c8d03f4e3aba78d2223e
+
+ <br/>
+
+**Malware Dropper hashes (MD5):**
+
+5ac0f050f93f86e69026faea1fbb4450
 
 <br/>
 
@@ -611,11 +767,51 @@ Below are two screenshots: the first from the current version we are analyzing, 
 
 ![image-20200918164107105](README.assets/image-20200918164107105.png)
 
+<br/>
 
+**Attacked targets**
 
+The ransomware attacks the following extensions:
 
+```
+tif php 1cd 7z cd 1cd dbf ai arw txt doc docm docx zip rar xlsx xls xlsb xlsm jpg jpe jpeg bmp db eql sql adp mdf frm mdb odb odm odp ods dbc frx db2 dbs pds pdt pdf dt cf cfu mxl epf kdbx erf vrp grs geo st pff mft efd 3dm 3ds rib ma max lwo lws m3d mb obj x x3d c4d fbx dgn dwg 4db 4dl 4mp abs adn a3d aft ahd alf ask awdb azz bdb bib bnd bok btr bak cdb ckp clkw cma crd dad daf db3 dbk dbt dbv dbx dcb dct dcx ddl df1 dmo dnc dp1 dqy dsk dsn dta dtsx dxl eco ecx edb emd fcd fic fid fil fm5 fol fp3 fp4 fp5 fp7 fpt fzb fzv gdb gwi hdb his ib idc ihx itdb itw jtx kdb lgc maq mdn mdt mrg mud mwb s3m myd ndf ns2 ns3 ns4 nsf nv2 nyf oce oqy ora orx owc owg oyx p96 p97 pan pdb pdm phm pnz pth pwa qpx qry qvd rctd rdb rpd rsd sbf sdb sdf spq sqb stp str tcx tdt te tmd trm udb usr v12 vdb vpd wdb wmdb xdb xld xlgc zdb zdc cdr cdr3 ppt pptx abw act aim ans apt asc ase aty awp awt aww bad bbs bdp bdr bean bna boc btd cnm crwl cyi dca dgs diz dne docz dot dotm dotx dsv dvi dx eio eit emlx epp err etf etx euc faq fb2 fbl fcf fdf fdr fds fdt fdx fdxt fes fft flr fodt gtp frt fwdn fxc gdoc gio gpn gsd gthr gv hbk hht hs htc hwp hz idx iil ipf jis joe jp1 jrtf kes klg knt kon kwd lbt lis lit lnt lp2 lrc lst ltr ltx lue luf lwp lyt lyx man map mbox me mell min mnt msg mwp nfo njx now nzb ocr odo odt ofl oft ort ott p7s pfs pfx pjt prt psw pu pvj pvm pwi pwr qdl rad rft ris rng rpt rst rt rtd rtf rtx run rzk rzn saf sam scc scm sct scw sdm sdoc sdw sgm sig sla sls smf sms ssa stw sty sub sxg sxw tab tdf tex text thp tlb tm tmv tmx tpc tvj u3d u3i unx uof uot upd utf8 utxt vct vnt vw wbk wcf wgz wn wp wp4 wp5 wp6 wp7 wpa wpd wpl wps wpt wpw wri wsc wsd wsh wtx xdl xlf xps xwp xy3 xyp xyw ybk yml zabw zw abm afx agif agp aic albm apd apm apng aps apx art asw bay bm2 bmx brk brn brt bss bti c4 cal cals can cd5 cdc cdg cimg cin cit colz cpc cpd cpg cps cpx cr2 ct dc2 dcr dds dgt dib djv djvu dm3 dmi vue dpx wire drz dt2 dtw dvl ecw eip exr fal fax fpos fpx g3 gcdp gfb gfie ggr gif gih gim spr scad gpd gro grob hdp hdr hpi i3d icn icon icpr iiq info ipx itc2 iwi j j2c j2k jas jb2 jbig jbmp jbr jfif jia jng jp2 jpg2 jps jpx jtf jwl jxr kdc kdi kdk kic kpg lbm ljp mac mbm mef mnr mos mpf mpo mrxs myl ncr nct nlm nrw oc3 oc4 oc5 oci omf oplc af2 af3 asy cdmm cdmt cdmz cdt cgm cmx cnv csy cv5 cvg cvi cvs cvx cwt cxf dcs ded dhs dpp drw dxb dxf egc emf ep eps epsf fh10 fh11 fh3 fh4 fh5 fh6 fh7 fh8 fif fig fmv ft10 ft11 ft7 ft8 ft9 ftn fxg gem glox hpg hpgl hpl idea igt igx imd ink lmk mgcb mgmf mgmt mt9 mgmx mgtx mmat mat otg ovp ovr pcs pfv pl plt vrml pobj psid rdl scv sk1 sk2 ssk stn svf svgz sxd tlc tne ufr vbr vec vml vsd vsdm vsdx vstm stm vstx wpg vsm xar yal orf ota oti ozb ozj ozt pal pano pap pbm pc1 pc2 pc3 pcd pdd pe4 pef pfi pgf pgm pi1 pi2 pi3 pic pict pix pjpg pm pmg pni pnm pntg pop pp4 pp5 ppm prw psdx pse psp ptg ptx pvr px pxr pz3 pza pzp pzs z3d qmg ras rcu rgb rgf ric riff rix rle rli rpf rri rs rsb rsr rw2 rwl s2mv sci sep sfc sfw skm sld sob spa spe sph spj spp sr2 srw ste sumo sva save ssfn t2b tb0 tbn tfc tg4 thm tjp tm2 tn tpi ufo uga vda vff vpe vst wb1 wbc wbd wbm wbmp wbz wdp webp wpb wpe wvl x3f y ysp zif cdr4 cdr6 cdrw ddoc css pptm raw cpt pcx pdn png psd tga tiff tif xpm ps sai wmf ani flc fb3 fli mng smil svg mobi swf html csv xhtm dat
+```
 
+<br/>
 
+**Encryption**
+
+Hermes, like many other ransomware, uses AES along with RSA for the encryption. AES is used to encrypt files with a random key. RSA is used to protect the random AES key.
+
+The ransomware uses two RSA key pairs, one being a RSA hardcoded public key for the attackers.
+
+![image-20200921080431914](README.assets/image-20200921080431914.png)
+
+Then, there is a keypair for the victim. It is generated at the beginning of the attack. The private key from this key pair is encrypted by the attackers’ public key and stored in the file UNIQUE_ID_DO_NOT_REMOVE.
+
+When the victim sends this file, the attackers can recover the victim’s private key with the help of their own private key. The victim’s public key is stored in PUBLIC in clear text. It is later used to encrypt random AES keys, generated per file.
+
+Cryptography is implemented with the help of Windows Crypto API. Function calls are mildly obfuscated, and pointers to the functions are manually loaded.
+
+![image-20200921080447581](README.assets/image-20200921080447581.png)
+
+Each file processing starts from checking if it was already encrypted. The ransomware uses the saved marker “HERMES” that we already saw during the behavioral analysis. The marker is stored at the end of the file, before the block where the AES key is saved. Its offset is 274 bytes from the end. So, first the file pointer is set at this position to make a check of the characters.
+
+![image-20200921080512308](README.assets/image-20200921080512308.png)
+
+If the marker was found, the file is skipped. Otherwise, it is processed further. As we noticed during the behavioral analysis, each file is encrypted with a new key. Looking at the code, we can find the responsible function. Unfortunately for the victims, the authors used the secure function CryptGenKey:
+
+![image-20200921080546669](README.assets/image-20200921080546669.png)
+
+The used identifier for the algorithm is 0x6610 (CALG_AES_256). That means 256-bit is using AES encryption. This key is used to encrypt the content of the file. The file is read and encrypted in chunks, with 1,000,000 bytes each.
+
+![image-20200921080613309](README.assets/image-20200921080613309.png)
+
+At the end, the marker “HERMES” is written and the exported AES key is saved:
+
+![image-20200921080630167](README.assets/image-20200921080630167.png)
+
+The handle to the attacker’s RSA public key is passed, so the function CryptExportKey automatically takes care of protecting the AES key. Only the owner of the RSA private key will be able to import it back.
 
 <br/>
 
@@ -623,7 +819,7 @@ Below are two screenshots: the first from the current version we are analyzing, 
 
 <br/>
 
-#### WannaCry
+#### ★ WannaCry
 
 <br/>
 
@@ -631,7 +827,7 @@ Below are two screenshots: the first from the current version we are analyzing, 
 
 <br/>
 
-#### Cerber
+#### ★ Cerber
 
 <br/>
 
@@ -639,7 +835,7 @@ Below are two screenshots: the first from the current version we are analyzing, 
 
 <br/>
 
-#### Locky
+#### ★ Locky
 
 <br/>
 
@@ -647,7 +843,7 @@ Below are two screenshots: the first from the current version we are analyzing, 
 
 <br/>
 
-#### Petya
+#### ★ Petya
 
 <br/>
 
@@ -655,7 +851,7 @@ Below are two screenshots: the first from the current version we are analyzing, 
 
 <br/>
 
-#### SamSam
+#### ★ SamSam
 
 <br/>
 
@@ -663,7 +859,7 @@ Below are two screenshots: the first from the current version we are analyzing, 
 
 <br/>
 
-#### DMA Locker
+#### ★ DMA Locker
 
 <br/>
 
@@ -671,7 +867,7 @@ Below are two screenshots: the first from the current version we are analyzing, 
 
 <br/>
 
-#### TeslaCrypt (2016)
+#### ▶ TeslaCrypt (2016)
 
 TeslaCrypt was a ransomware trojan.
 It is now defunct, and its master key was released by the developers.
@@ -699,7 +895,7 @@ A full behavior report, which shows BehaviorGraphs and ExecutionGraphs was publi
 
 <br/>
 
-##### TeslaCrypt shuts down and Releases Master Decryption Key | May 18, 2016
+##### ▷ TeslaCrypt shuts down and Releases Master Decryption Key | May 18, 2016
 
 In surprising end to TeslaCrypt, the developers shut down their ransomware and released the master decryption key. Over the past few weeks, an analyst for ESET had noticed that the developers of TeslaCrypt have been slowly closing their doors, while their previous distributors have been switching over to distributing the CryptXXX ransomware.  
 
@@ -739,7 +935,7 @@ When TeslaDecoder is done decrypting your files, it will show a summary in the m
 
 <br/>
 
-##### https://github.com/Googulator/TeslaCrack
+##### ▷ https://github.com/Googulator/TeslaCrack
 
 **TeslaCrack - decrypt files crypted by TeslaCrypt ransomware**
 
@@ -1333,7 +1529,7 @@ if __name__=='__main__':
 
 <br/>
 
-#### CryptoWall (2014)
+#### ▶ CryptoWall (2014)
 
 CryptoWall Ransomware Threat Analysis | WEDNESDAY, AUGUST 27, 2014
 
