@@ -141,7 +141,7 @@ The majority of crypto ransomware infections will not damage the victim’s oper
 - You cannot open your files; you always receive an error message that the file you are trying to access has the wrong extension (e.g.,
   Windows asks you “How do you want to open this file?”) or it is corrupted.
 
-![image-20200918104939109](Ransomeware_Recovery.assets/image-20200918104939109.png)
+![image-20200918104939109](README.assets/image-20200918104939109.png)
 
 - The ransomware may change your desktop wallpaper and replace it with a ransom note.
 - Your computer is locked, and you cannot access your desktop. A splash screen displaying the ransom note appears instead and covers the whole screen asking you to pay a ransom within a limited time frame; otherwise, your data will get lost forever.
@@ -181,7 +181,7 @@ Ransomware infects almost all IT devices types including servers, mobile devices
 
 랜섬웨어는 USB 스틱, SD카드, 디지털카메라, 외장하드 등 피해자 기계에 부착된 저장장치 외에 서버, 모바일 기기, 다양한 유형의 IoT 기기 등 거의 모든 IT 기기 유형을 감염시킨다.
 
-![image-20200918130121399](Ransomeware_Recovery.assets/image-20200918130121399.png)
+![image-20200918130121399](README.assets/image-20200918130121399.png)
 
 ```
 Most ransomware campaigns target Windows OS and Android devices because the global market share for OSs is dominated by these two operating systems, according to recent statistics published by StatCounter in January 2019.
@@ -191,7 +191,7 @@ StatCounter가 2019년 1월에 발표한 최근 통계에 따르면 대부분의
 
 왜냐하면 OS의 세계 시장 점유율이 이 두 운영 체제가 차지하고 있기 때문이다.
 
-![image-20200918130221562](Ransomeware_Recovery.assets/image-20200918130221562.png)
+![image-20200918130221562](README.assets/image-20200918130221562.png)
 
 ```
 However, this does not mean that cybercriminals do not target other device types.
@@ -230,9 +230,13 @@ Security experts prefer to classify ransomware into families according to its co
 
 #### Abaddon
 
-![image-20200918155023439](Ransomeware_Recovery.assets/image-20200918155023439.png)
+![image-20200918155023439](README.assets/image-20200918155023439.png){:.alignleft}
 
-![image-20200918155051147](Ransomeware_Recovery.assets/image-20200918155051147.png)
+
+
+![image-20200918155051147](README.assets/image-20200918155051147.png){:.alignleft}
+
+
 
 
 
@@ -270,7 +274,7 @@ While many ransomware attempts to shut down the most common applications that ar
 
 In a new report by cybercrime intelligence firm Intel471, researchers have spotted that Sodinokibi is now using the Windows Restart Manager) API to close processes or shut down Windows services keeping a file open during encryption.
 
-![image-20200918161911555](Ransomeware_Recovery.assets/image-20200918161911555.png)
+![image-20200918161911555](README.assets/image-20200918161911555.png)
 
 This API was created by Microsoft to make it easier to install software updates without performing a restart to free files that the updates need to replace.
 
@@ -278,11 +282,11 @@ This API was created by Microsoft to make it easier to install software updates 
 
 In addition to using the API while encrypting files, the ransomware developers are also using it in their decryptor. 
 
-![image-20200918161936094](Ransomeware_Recovery.assets/image-20200918161936094.png)
+![image-20200918161936094](README.assets/image-20200918161936094.png)
 
 As noted by security researcher Vitali Kremez, in REvil Decryptor v2.2, shown above, the Windows Restart Manager API is being used to make sure no processes are keeping a file open when the decryptor tries to decrypt it.
 
-![image-20200918162005012](Ransomeware_Recovery.assets/image-20200918162005012.png)
+![image-20200918162005012](README.assets/image-20200918162005012.png)
 
 Sodinokibi/REvil is not the first ransomware families to utilize this API in their malware as both SamsSam and LockerGoga use it as well.
 
@@ -319,7 +323,7 @@ Ryuk는 2018년 8월 처음 등장, 북한군과 연관된 APT 라자러스 해�
 
 Checkpoint 보안 연구진은 Ryuk가 2017년 2월 처음 발견된 헤르메스 랜섬웨어 변형1(둘 다 유사한 암호화 루틴을 사용)과 많은 유사점을 공유하며 스팸 캠페인과 악용 키트를 이용해 피해자를 감염시킨다는 사실을 밝혀냈다.
 
-![image-20200918134001783](Ransomeware_Recovery.assets/image-20200918134001783.png)
+![image-20200918134001783](README.assets/image-20200918134001783.png)
 
 <br/>
 
@@ -389,11 +393,11 @@ An interesting finding that arises when inspecting Ryuk’s code is that its enc
 
 Indeed, if we compare the function that encrypts a single file, we see much similarity in its structure, as depicted in the following call flow graphs:
 
-![image-20200918154527421](Ransomeware_Recovery.assets/image-20200918154527421.png)
+![image-20200918154527421](README.assets/image-20200918154527421.png)
 
 In fact, it seems that the author of Ryuk did not even bother to change the marker in the encrypted files as the code used to generate, place and verify this marker in order to determine if a file was already encrypted are identical in both malwares:
 
-![image-20200918154543645](Ransomeware_Recovery.assets/image-20200918154543645.png)
+![image-20200918154543645](README.assets/image-20200918154543645.png)
 
 Additionally, the function that invokes the aforementioned routine conducts very similar actions in both cases. For instance, both whitelist similar folders (e.g. “Ahnlab”, “Microsoft”, “$Recycle.Bin” etc.) to avoid file encryption of files stored in them. Also, both write a batch script named “window.bat” in the same path, with a similar script used to delete shadow volumes and backup files. Likewise, in both cases there are files dropped to disk (“PUBLIC” and “UNIQUE_ID_DO_NOT_REMOVE”) which resemble in name and purpose.
 
@@ -421,7 +425,7 @@ Finally, before terminating, the dropper calls *ShellExecuteW* to execute the Ry
 
 Upon execution, the Ryuk ransomware conducts a *Sleep* of several seconds and then checks whether it was executed with an argument. If such was passed, it will use it as a path to a file that is deleted using *DeleteFileW*. Based on the malware’s dropper code, this argument would be the path to the dropper itself. Following this, the ransomware will kill more than 40 processes and stop more than 180 services by executing *taskkill* and *net stop* on a list of predefined service and process names. These services and processes are mostly belonging to antivirus, database, backup and document editing software.
 
-![image-20200918154635786](Ransomeware_Recovery.assets/image-20200918154635786.png)
+![image-20200918154635786](README.assets/image-20200918154635786.png)
 
 **Persistence & Process Enumeration**
 
@@ -431,7 +435,7 @@ To make sure the malware is executed after reboot, Ryuk uses a straight forward 
 
 It will then try to elevate to *SeDebugPrivilege* so as to have extended capabilities in subsequent actions and prepare for injection by forming an array of structures. Each entry in the array represents a running process in the system and contains the process’ name, PID, and a number which represents the account type of its owner (as outlined in the figure below). After putting the aforementioned process list together, Ryuk will iterate over it and try to inject a code to each process’s address space, as long as its name is not “*explorer.exe*”, “*csrss.exe*” or “*lsaas.exe*”, or is not run by NT AUTHORITY.
 
-![image-20200918154742465](Ransomeware_Recovery.assets/image-20200918154742465.png)
+![image-20200918154742465](README.assets/image-20200918154742465.png)
 
 <br/>
 
@@ -451,7 +455,7 @@ On March 9th, MDNC discovered that a less common, but more sophisticated exploit
 
 By checking on the indicators published by MDNC, we were able to identify this campaign within our telemetry and noticed that all exploit attempts were made against South Korean users. Based on our records, the first hit happened on February 27, 2018, (01:54 UTC) via a compromised Korean website.
 
-![image-20200918135243933](Ransomeware_Recovery.assets/image-20200918135243933.png)
+![image-20200918135243933](README.assets/image-20200918135243933.png)
 
 We replayed this attack in our lab and spent a fair amount of time looking for redirection code within the JavaScript libraries part of the self hosted OpenX server. Instead, we found that it was hiding in the main page’s source code.
 
@@ -469,29 +473,29 @@ The payload from this attack is Hermes ransomware, version 2.1.
 
 The ransomware copies itself into `%TEMP%` under the name `svchosta.exe` and redeploys itself from that location. The initial sample is then deleted.
 
-![image-20200918152222791](Ransomeware_Recovery.assets/image-20200918152222791.png)
+![image-20200918152222791](README.assets/image-20200918152222791.png)
 
 The ransomware is not particularly stealthy—some windows pop up during its run. For example, we are asked to run a batch script with administrator privileges:
 
-![image-20200918152240254](Ransomeware_Recovery.assets/image-20200918152240254.png)
+![image-20200918152240254](README.assets/image-20200918152240254.png)
 
 The authors didn’t bother to deploy any UAC bypass technique, relying only on social engineering for this. The pop-up is deployed in a loop, and by this way it tries to force the user into accepting it. But even if we don’t let the batch script be deployed, the main executable proceeds with encryption.
 
 The batch script is responsible for removing the shadow copies and other possible backups:
 
-![image-20200918152308067](Ransomeware_Recovery.assets/image-20200918152308067.png)
+![image-20200918152308067](README.assets/image-20200918152308067.png)
 
 It is dropped inside C:\Users\Public along with some other files:
 
-![image-20200918152326456](Ransomeware_Recovery.assets/image-20200918152326456.png)
+![image-20200918152326456](README.assets/image-20200918152326456.png)
 
 The file “PUBLIC” contains a blob with RSA public key. It is worth noting that this key is unique on each run, so, the RSA key pair is generated per victim. Example:
 
-![image-20200918152342925](Ransomeware_Recovery.assets/image-20200918152342925.png)
+![image-20200918152342925](README.assets/image-20200918152342925.png)
 
 Another file is an encrypted block of data named UNIQUE_ID_DO_NOT_REMOVE. It is a blob containing an encrypted private RSA key, unique for the victim:
 
-![image-20200918152416816](Ransomeware_Recovery.assets/image-20200918152416816.png)
+![image-20200918152416816](README.assets/image-20200918152416816.png)
 
 Analyzing the blob header, we find the following information:
 
@@ -503,23 +507,23 @@ The rest of the data is encrypted—at this moment, we can guess that it is encr
 
 The same folder also contains a ransom note. When the encryption finished, the ransom note pops up. The note is in HTML format, named DECRYPT_INFORMATION.html.
 
-![image-20200918163153972](Ransomeware_Recovery.assets/image-20200918163153972.png)
+![image-20200918163153972](README.assets/image-20200918163153972.png)
 
 The interesting fact is that, depending on the campaign, in some of the samples the authors used BitMessage to communicate with victims:
 
-![image-20200918163220943](Ransomeware_Recovery.assets/image-20200918163220943.png)
+![image-20200918163220943](README.assets/image-20200918163220943.png)
 
 This method was used in the past by a few other authors, for example in Chimera ransomware, and by the author of original Petya in his affiliate programs.
 
 Encrypted files don’t have their names changed. Each file is encrypted with a new key—the same plaintext produces various ciphertext. The entropy of the encrypted file is high, and no patterns are visible. That suggests that some stream cipher or a cipher with chained blocks was used. (The most commonly used in such cases is AES in CBC mode, but we can be sure only after analyzing the code). Below, you can see a visualization of a BMP file before and after being encrypted by Hermes: 
 
-![image-20200918163241676](Ransomeware_Recovery.assets/image-20200918163241676.png)
+![image-20200918163241676](README.assets/image-20200918163241676.png)
 
 This time the blob contains an exported session key (0x01 : SIMPLEBLOB) and the algorithm identifier is AES (0x6611: CALG_AES). We can make an educated guess that it is the AES key for the file, encrypted by the victim’s RSA key (from the generated pair).
 
 The ransomware achieves persistence by dropping a batch script in the Startup folder:
 
-![image-20200918163301618](Ransomeware_Recovery.assets/image-20200918163301618.png)
+![image-20200918163301618](README.assets/image-20200918163301618.png)
 
 So, on each system startup it will make a check for new, unencrypted files and try to encrypt them. That’s why, as soon as one discovers that they have been attacked by this ransomware, they should remove the persistence entry in order to not let the attack repeat itself.
 
@@ -531,17 +535,17 @@ So, on each system startup it will make a check for new, unencrypted files and t
 
 At the beginning of the execution, the ransomware creates a mutex named “tech”:
 
-![image-20200918163335795](Ransomeware_Recovery.assets/image-20200918163335795.png)
+![image-20200918163335795](README.assets/image-20200918163335795.png)
 
 The sample is mildly obfuscated, for example, its imports are loaded at runtime. The .data section of the PE file is also decrypted during the execution, so, at first we will not see the typical strings.
 
 First, the executable begins to dynamically load all its imports via a function at 4023e0:
 
-![image-20200918163355983](Ransomeware_Recovery.assets/image-20200918163355983.png)
+![image-20200918163355983](README.assets/image-20200918163355983.png)
 
 It then checks the registry key for a language code. If Russian, Belarusian, or Ukrainian are found as the system language, it exits the process (0x419 being Russian, 422 Ukrainian, and 423 Belarusian).
 
-![image-20200918163414133](Ransomeware_Recovery.assets/image-20200918163414133.png)
+![image-20200918163414133](README.assets/image-20200918163414133.png)
 
 It then creates two subprocesses – cmd.exe.
 
@@ -551,23 +555,23 @@ It also generates crypto keys using standard CryoptAquireCOntext libraries,
 
 and saves the public key and some kind of ID into the following files:
 
-![image-20200918163817213](Ransomeware_Recovery.assets/image-20200918163817213.png)
+![image-20200918163817213](README.assets/image-20200918163817213.png)
 
 As mentioned earlier, it writes out a script to auto run on startup with contents: **start “” %TEMP%\svchosta.exe** into the Start menu startup folder. This is quite simple and conspicuous. Since it is always running and keeps persistence, it makes sense that it saved out the public key into a file so that it can later find that key and continue encrypting using a consistent key throughout all executions.
 
 Below is the function that calls all of this functionality sequentially, labeled:
 
-![image-20200918163839480](Ransomeware_Recovery.assets/image-20200918163839480.png)
+![image-20200918163839480](README.assets/image-20200918163839480.png)
 
 It proceeds to cycle all available drives. If it is CDRom, it will skip it. Inside the function, it goes through all files and folders on the drive, but skips a few key directories, not limited to Windows, Mozilla, and the recycling bin.
 
-![image-20200918163904286](Ransomeware_Recovery.assets/image-20200918163904286.png)
+![image-20200918163904286](README.assets/image-20200918163904286.png)
 
 Inside of the function labeled recursiveSearch_Encrypt are the checks for key folders and drive type:
 
-![image-20200918163928070](Ransomeware_Recovery.assets/image-20200918163928070.png)
+![image-20200918163928070](README.assets/image-20200918163928070.png)
 
-![image-20200918163940923](Ransomeware_Recovery.assets/image-20200918163940923.png)
+![image-20200918163940923](README.assets/image-20200918163940923.png)
 
 It then continues on to enumerate netResources and encrypts those files as well. After encryption, it creates another bat file called **window.bat** to delete shadow volume and backup files. Here is its content:
 
@@ -603,9 +607,9 @@ We have found that there is a heavy code reuse from the old versions of Hermes w
 
 Below are two screenshots: the first from the current version we are analyzing, and the second from the old version. You can clearly see that even though the flow and arrangement are a bit different, the functionality remains mostly the same.
 
-![image-20200918164055500](Ransomeware_Recovery.assets/image-20200918164055500.png)
+![image-20200918164055500](README.assets/image-20200918164055500.png)
 
-![image-20200918164107105](Ransomeware_Recovery.assets/image-20200918164107105.png)
+![image-20200918164107105](README.assets/image-20200918164107105.png)
 
 
 
@@ -685,11 +689,11 @@ By November 2015, security researchers from Kaspersky had been quietly circulati
 As of January 2016, a new version 3.0 was discovered that had fixed the flaw.
 A full behavior report, which shows BehaviorGraphs and ExecutionGraphs was published by JoeSecurity.
 
-![image-20200918161028686](Ransomeware_Recovery.assets/image-20200918161028686.png)
+![image-20200918161028686](README.assets/image-20200918161028686.png)
 
-![image-20200918161053794](Ransomeware_Recovery.assets/image-20200918161053794.png)
+![image-20200918161053794](README.assets/image-20200918161053794.png)
 
-![image-20200918161128849](Ransomeware_Recovery.assets/image-20200918161128849.png)
+![image-20200918161128849](README.assets/image-20200918161128849.png)
 
 <br/>
 
@@ -701,7 +705,7 @@ In surprising end to TeslaCrypt, the developers shut down their ransomware and r
 
 When the ESET researcher realized what was happening, he took a shot in the dark and used the support chat on the Tesla payment site to ask if they would release the master TeslaCrypt decryption key. To his surprise and pleasure, they agreed to do so and posted it on their now defunct payment site.
 
-![image-20200918162213294](Ransomeware_Recovery.assets/image-20200918162213294.png)
+![image-20200918162213294](README.assets/image-20200918162213294.png)
 
 Now that the decryption key has been made publicly available, this allowed TeslaCrypt expert BloodDolly to update TeslaDecoder to version 1.0 so that it can decrypt version 3.0 and version 4.0 of TeslaCrypt encrypted files.  This means that anyone who has TeslasCrypt encrypted files with the .xxx, .ttt, .micro, .mp3, or encrypted files without an extension can now decrypt their files for free!
 
@@ -709,27 +713,27 @@ With the release of the master decryption key for TeslaCrypt, victims can now do
 
 TelaDecoder is downloaded as a zip file, so you need to extract it and then double-click on the TeslaDecoder.exe file.  This will launch TeslaDecoder as shown below.
 
-![image-20200918162327070](Ransomeware_Recovery.assets/image-20200918162327070.png)
+![image-20200918162327070](README.assets/image-20200918162327070.png)
 
 Now click on the **Set** **Key** button and select the extension used for your encrypted files.
 
-![image-20200918162353428](Ransomeware_Recovery.assets/image-20200918162353428.png)
+![image-20200918162353428](README.assets/image-20200918162353428.png)
 
 If your encrypted files have the same name as the original files, select the option.
 
 Once you have selected your encrypted file extension, click on the **Set Key** button as shown in the image below.
 
-![image-20200918162412763](Ransomeware_Recovery.assets/image-20200918162412763.png)
+![image-20200918162412763](README.assets/image-20200918162412763.png)
 
 You will now be at the main screen with the correct decryption key loaded into the decryptor as shown below.
 
-![image-20200918162429025](Ransomeware_Recovery.assets/image-20200918162429025.png)
+![image-20200918162429025](README.assets/image-20200918162429025.png)
 
 Now that the correct decryption key is loaded into the decryptor, you can either decrypt a certain folder or have it scan your entire drive.  To decrypt only a specified folder, click on the Decrypt folder button. To decrypt the whole computer, click on the Decrypt all button.  When you click on this button, TeslaDecoder will ask if you want to overwrite your files with the unencrypted version. To be safe, I always suggest that you do not do this in case something fails with the decryption.
 
 When TeslaDecoder is done decrypting your files, it will show a summary in the main window.
 
-![image-20200918162457765](Ransomeware_Recovery.assets/image-20200918162457765.png)
+![image-20200918162457765](README.assets/image-20200918162457765.png)
 
 <br/>
 
@@ -1345,7 +1349,7 @@ After the emergence of the infamous CryptoLocker ransomware in September 2013, C
 
 Early CryptoWall variants closely mimicked both the behavior and appearance of the genuine CryptoLocker (see Figure 1). The exact infection vector of these early infections is not known as of this publication, but anecdotal reports from victims suggest the malware arrived as an email attachment or drive-by download. Evidence collected by CTU researchers in the first several days of the February 2014 campaign showed at least several thousand global infections.
 
-![image-20200918165146351](Ransomeware_Recovery.assets/image-20200918165146351.png)
+![image-20200918165146351](README.assets/image-20200918165146351.png)
 
 As illustrated by a sample uploaded to the VirusTotal analysis service, CryptoWall has had multiple names. CTU researchers called early variants "CryptoClone" due to a lack of a unique name offered by the threat actors. In mid-March 2014, the authors revealed that the true name of this malware was CryptoDefense. In early May 2014, the malware's name was again changed to CryptoWall.
 
@@ -1359,17 +1363,17 @@ CryptoWall has spread through various infection vectors since its inception, inc
 
 On June 5, 2014, an aggressive spam campaign launched by Cutwail led to the largest single-day infection rates observed by CTU researchers as of this publication. These emails used a common "missed fax" lure that included links to Dropbox. This spam campaign paused over the weekend but resumed in earnest on June 9-10 with emails purporting to be from financial institutions or government agencies, as shown in Figure 2.
 
-![image-20200918165237732](Ransomeware_Recovery.assets/image-20200918165237732.png)
+![image-20200918165237732](README.assets/image-20200918165237732.png)
 
 On both May 25 and May 28, just prior to this spam campaign, security researchers observed the Angler exploit kit distributing CryptoWall. The RIG exploit kit was also observed distributing this malware between May 19 and May 30. In early May, the Infinity exploit kit (also known as Goon and Redkit V2) was infecting systems with CryptoWall.
 
 Since CryptoWall's emergence in late February 2014, CTU researchers have observed steady but low-level infection rates on Dell SecureWorks client networks. The threat actors behind CryptoWall increased the volume of its distribution in mid-May, resulting in a marked growth in infections (see Figure 3).
 
-![image-20200918165256127](Ransomeware_Recovery.assets/image-20200918165256127.png)
+![image-20200918165256127](README.assets/image-20200918165256127.png)
 
 On February 26, 2014, CTU researchers registered a domain used by the CryptoWall malware as a backup command and control (C2) server. Through June 13, this sinkhole received connections from 968 unique hosts that appeared to be infected with early CryptoWall variants (see Figure 4).
 
-![image-20200918165314451](Ransomeware_Recovery.assets/image-20200918165314451.png)
+![image-20200918165314451](README.assets/image-20200918165314451.png)
 
 The geographic distribution of infected systems indicated a bias towards systems in Asian and Middle Eastern countries, as shown in Table 1.
 
@@ -1392,7 +1396,7 @@ Every new infection is assigned a unique alphanumeric code (Base 36), which is a
 
 Figure 5 shows the geographic distribution of these compromised systems. Every nation in the world had at least one victim. Most of the infections are in the United States due to CryptoWall's frequent distribution through Cutwail spam targeting English-speaking users.
 
-![image-20200918165338366](Ransomeware_Recovery.assets/image-20200918165338366.png)
+![image-20200918165338366](README.assets/image-20200918165338366.png)
 
 Table 2 lists the top ten affected countries.
 
@@ -1467,11 +1471,11 @@ Both techniques prevent infected systems from recovering encrypted files.
 
 Finally, the malicious code creates a "svchost.exe -k netsvcs" process, again using the legitimate system binary. The malicious svchost.exe process is anomalous, as it runs with the privileges of the victim system's user and not as a system process (see Figure 6). Additionally, the process runs independently and does not appear as a child process of services.exe.
 
-![image-20200918165426680](Ransomeware_Recovery.assets/image-20200918165426680.png)
+![image-20200918165426680](README.assets/image-20200918165426680.png)
 
 To establish persistence across system reboots, a copy of the malware is placed in %AppData%, %UserProfile%\Start Menu\Programs\Startup, and a directory at the root of the system drive. Then the malware adds multiple "autostart" registry keys (see Figure 7). Some CryptoWall variants also install a "RunOnce" key prefixed with an asterisk, which causes the executable to run even in Safe Mode. Each sample is configured to use a certain six hexadecimal character filename (e.g., 3e0d6a) that the malware uses in other variations (e.g., 3e0d6a9).
 
-![image-20200918165442552](Ransomeware_Recovery.assets/image-20200918165442552.png)
+![image-20200918165442552](README.assets/image-20200918165442552.png)
 
 <br/>
 
@@ -1481,7 +1485,7 @@ CryptoWall uses an unremarkable C2 system that relies on several static domains 
 
 Once CryptoWall is active on a compromised system, it sends an initial phone-home message to the C2 server over HTTP on TCP port 80 (see Figure 8).
 
-![image-20200918165503157](Ransomeware_Recovery.assets/image-20200918165503157.png)
+![image-20200918165503157](README.assets/image-20200918165503157.png)
 
 These servers use the Privoxy non-caching web proxy and likely act as first-tier servers that proxy traffic from victims to backend servers that manage encryption keys. In late July 2014, several distributed samples used C2 servers hosted on the Tor network, which may indicate the operators intend to eventually stop using traditional, directly accessible servers.
 
@@ -1491,7 +1495,7 @@ The requested object is the RC4 key used to encrypt the information contained in
 
 The "cw1900" string represents the CryptoWall binary's campaign. The string of 32 hexadecimal characters is a unique infection identifier derived from the compromised system's computer name, disk volume serial number, processor information, and OS version (see Figure 9). This string is also used as a mutex that prevents multiple copies from infecting the same system.
 
-![image-20200918165532328](Ransomeware_Recovery.assets/image-20200918165532328.png)
+![image-20200918165532328](README.assets/image-20200918165532328.png)
 
 An active C2 server responds with data encrypted with the same RC4 key. Each request initiated by the compromised system uses a new RC4 key. After a compromised system successfully contacts an active C2 server, the system sends a second request that prompts the C2 server to send the following reply (shown unencrypted):
 
@@ -1523,7 +1527,7 @@ File encryption begins after CryptoWall successfully retrieves the RSA public ke
 
 The first explicit indication of an active infection presented to a victim is the web page that CryptoWall opens after encrypting the files (see Figure 10).
 
-![image-20200918165631137](Ransomeware_Recovery.assets/image-20200918165631137.png)
+![image-20200918165631137](README.assets/image-20200918165631137.png)
 
 CryptoWall variants deployed before April 1, 2014 contained a weakness in the cryptographic implementation that allowed recovery of the key used to encrypt files. This flaw appears to have been corrected in later versions of the malware. CTU researchers have not performed a rigorous assessment of CryptoWall's cryptographic implementation, but they have not discovered any obvious flaws that allow decryption without payment.
 
@@ -1553,13 +1557,13 @@ CryptoWall recursively navigates the file system, selectively encrypting certain
 
 Files on fixed (e.g., hard disks), removable (e.g., USB memory), and network drives (when mapped to a drive letter) are targeted for encryption. Furthermore, cloud storage services, such as Dropbox or Google Drive, that are mapped to a targeted file system will also be encrypted. Typically, encrypted files are five to ten percent larger than their original versions. CryptoWall marks encrypted files by prepending a custom header (see Figure 11).
 
-![image-20200918165654880](Ransomeware_Recovery.assets/image-20200918165654880.png)
+![image-20200918165654880](README.assets/image-20200918165654880.png)
 
 CryptoWall leaves three "DECRYPT_INSTRUCTIONS" files with .url, .txt, and .html extensions in each directory it traverses. These files contain information about the infection and instructions on how to pay the ransom.
 
 The CTU research team discourages victims from paying ransoms because it facilitates the growth of cybercrime enterprises. Victims who choose to pay the ransom submit payment and wait an arbitrary amount of time for the threat actors to confirm the payment. Once the payment has been confirmed, the victim's page on the payment server reflects the changes shown in Figure 12.
 
-![image-20200918170141707](Ransomeware_Recovery.assets/image-20200918170141707.png)
+![image-20200918170141707](README.assets/image-20200918170141707.png)
 
 A "decrypt.zip" archive contains a small (30 KB) decryption program ("decrypt.exe") and the victim's secret RSA key ("secret.key") in Microsoft Cryptographic Provider key BLOB format. The decryption program is a UPX-packed executable that is uniquely generated for each victim after payment.
 
@@ -1569,7 +1573,7 @@ A "decrypt.zip" archive contains a small (30 KB) decryption program ("decrypt.ex
 
 Like CryptoLocker, earlier CryptoWall variants included numerous payment options, including pre-paid cards such as MoneyPak, Paysafecard, cashU, and Ukash in addition to the Bitcoin cryptocurrency. Unlike CryptoLocker, the CryptoWall threat actors originally accepted Litecoin (see Figure 13); however, the only observed Litecoin address (LTv4m4y7NKHCXdw31dSEpTJmP6kXTinWDy) never received any payments.
 
-![image-20200918170211004](Ransomeware_Recovery.assets/image-20200918170211004.png)
+![image-20200918170211004](README.assets/image-20200918170211004.png)
 
 The ransom has frequently fluctuated at the whim of the botnet operators, and no exact pattern has been established that determines which victims receive a particular ransom value. Ransoms ranging from $200 to $2,000 have been demanded at various times by CryptoWall's operators. The larger ransoms are typically reserved for victims who do not pay within the allotted time (usually 4 to 7 days). In one case, a victim paid $10,000 for the release of their files.
 
@@ -1862,7 +1866,7 @@ PayBreak은 이러한 키의 사용을 관찰하고 에스크로 보관하며, �
 
 마지막으로 PayBreak는 일반적인 작업 부하에 대해 최소한의 성능 오버헤드로 보호 작업을 수행하므로 사전 예방적 온라인 보호 시스템으로 이상적으로 적합하다.
 
-![image-20200918092850130](Ransomeware_Recovery.assets/image-20200918092850130.png)
+![image-20200918092850130](README.assets/image-20200918092850130.png)
 
 이 시스템의 키 값 자산은 마이크로소프트의 CryptoAPI와 Crypto++에서 사용하는 대칭키는 필요한 경우에만 피해자가 접근할 수 있도록 안전하게 저장된다.
 
@@ -1886,55 +1890,55 @@ PayBreak은 이러한 키의 사용을 관찰하고 에스크로 보관하며, �
 
 최근 Alma 랜섬웨어라 불리는 새로운 유형의 랜섬웨어가 공격 키트를 통해 전달되는 것을 확인하였고, 웹 서버에 종종 숨겨져 있는 공격 키트(EK)는 악성 페이로드 전달을 위해 사용자의 웹 브라우저를 방문하는 취약성을 악용하는 위협 행위자들이 사용하는 툴킷이다.
 
-![image-20200918094637113](Ransomeware_Recovery.assets/image-20200918094637113.png)
+![image-20200918094637113](README.assets/image-20200918094637113.png)
 
-![image-20200918094653131](Ransomeware_Recovery.assets/image-20200918094653131.png)
+![image-20200918094653131](README.assets/image-20200918094653131.png)
 
 The executable itself makes use of Address Space Layout Randomization (ASLR) enabled per a flag found in the PE Header. ASLR is a protection mechanism in which the operating system randomizes the memory locations of the program in order to make it less susceptible to buffer overflow attacks. However, to less experienced malware analysts or to those unfamiliar with the concept, it also makes it more difficult to analyze as locations for certain functions will change upon each execution of the payload. This is easily defeated by changing the corresponding value found within the header of the executable.
 
-![image-20200918094715640](Ransomeware_Recovery.assets/image-20200918094715640.png)
+![image-20200918094715640](README.assets/image-20200918094715640.png)
 
-![image-20200918094735318](Ransomeware_Recovery.assets/image-20200918094735318.png)
+![image-20200918094735318](README.assets/image-20200918094735318.png)
 
-![image-20200918094749847](Ransomeware_Recovery.assets/image-20200918094749847.png)
+![image-20200918094749847](README.assets/image-20200918094749847.png)
 
-![image-20200918094804746](Ransomeware_Recovery.assets/image-20200918094804746.png)
+![image-20200918094804746](README.assets/image-20200918094804746.png)
 
-![image-20200918094843065](Ransomeware_Recovery.assets/image-20200918094843065.png)
+![image-20200918094843065](README.assets/image-20200918094843065.png)
 
-![image-20200918094858310](Ransomeware_Recovery.assets/image-20200918094858310.png)
+![image-20200918094858310](README.assets/image-20200918094858310.png)
 
-![image-20200918094912861](Ransomeware_Recovery.assets/image-20200918094912861.png)
+![image-20200918094912861](README.assets/image-20200918094912861.png)
 
-![image-20200918094925471](Ransomeware_Recovery.assets/image-20200918094925471.png)
+![image-20200918094925471](README.assets/image-20200918094925471.png)
 
-![image-20200918094939084](Ransomeware_Recovery.assets/image-20200918094939084.png)
+![image-20200918094939084](README.assets/image-20200918094939084.png)
 
 분석을 통해 해독 도구는 모든 희생자가 자신의 파일을 해독할 수 있도록 하는 MITM(man-in-the-middle) 기법에 취약하다고 판단했다.
 
 아래 그림 12는 알마 랜섬웨어가 암호화를 수행한 후 간단한 텍스트 파일을 보여준다.
 
-![image-20200918095109962](Ransomeware_Recovery.assets/image-20200918095109962.png)
+![image-20200918095109962](README.assets/image-20200918095109962.png)
 
-![image-20200918095124600](Ransomeware_Recovery.assets/image-20200918095124600.png)
+![image-20200918095124600](README.assets/image-20200918095124600.png)
 
 Now we can execute a MITM technique on the decrypter (or write your own) to restore your files. We made use of Fiddler, a popular HTTP proxy developed by Telerik to modify the responses from the command and control server. Before the responses can be modified, you need to enable filtering so that breakpoints can be set on POST requests. Figure 14 shows the parameters that need to be set before the man-in-the-middle attack can be completed.
 
-![image-20200918095150218](Ransomeware_Recovery.assets/image-20200918095150218.png)
+![image-20200918095150218](README.assets/image-20200918095150218.png)
 
 As displayed in Figure 8, when the decrypter is run, it attempts to check-in with the command and control by issuing a POST request to I.php. The server will then respond with several values (Bitcoin wallet, file extension, hours left to pay, amount to pay). Figure 15 below displays that you can run the POST request and break on the response. Here we are able to supply Fiddler with a .dat file containing parameters we specify. This allows manipulation of any of these values, including amount to pay and time left to pay.
 
-![image-20200918095248635](Ransomeware_Recovery.assets/image-20200918095248635.png)
+![image-20200918095248635](README.assets/image-20200918095248635.png)
 
 After we have supplied Fiddler with the data file, we can then click “Run to Completion”. The decrypter will then issue a request POSTing the Bitcoin Address to c.php. If the victim has not paid the ransom, the server will respond with nothing. We can craft a data file containing the key generated by the Alma Ransomware payload and break on the response. Figure 16 below exhibits our state at this point.
 
-![image-20200918095307120](Ransomeware_Recovery.assets/image-20200918095307120.png)
+![image-20200918095307120](README.assets/image-20200918095307120.png)
 
-![image-20200918095325106](Ransomeware_Recovery.assets/image-20200918095325106.png)
+![image-20200918095325106](README.assets/image-20200918095325106.png)
 
 Figure 17, shows our MITM attack is successful using the values supplied by our data files and Fiddler. We are now granted the ability to decrypt any of our previously encrypted files. We want to decrypt our PlainText.txt file from Figures 12 and 13 and our results are displayed in figure 18 below.
 
-![image-20200918095343723](Ransomeware_Recovery.assets/image-20200918095343723.png)
+![image-20200918095343723](README.assets/image-20200918095343723.png)
 
 <br/>
 
@@ -2158,7 +2162,7 @@ Crypto ransomware has earned an infamousreputation in the malware landscape and 
 
 아무리 파괴적인 랜섬웨어 공격이 나타나더라도 데이터 복구 옵션의 핵심은 기본 공격 구조와 구현된 데이터 삭제 방법론에 있다는 결론을 도출한다.
 
-![image-20200918085824157](Ransomeware_Recovery.assets/image-20200918085824157.png)
+![image-20200918085824157](README.assets/image-20200918085824157.png)
 
 >  A ransomware attack on data recovery can implement any of the four attack instances depicted in figure 1.
 
