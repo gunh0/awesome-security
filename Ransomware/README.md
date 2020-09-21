@@ -25,22 +25,22 @@
 
   - **Ransomware Families**
 
-    - ##### Abaddon
+    - **BlueCrab (2019)**
 
     - **Sodinokibi (2019)**
 
     - **GANDCRAB v5.0.2 (2018)**
 
-    - **Ryuk**
+    - **Ryuk (2018)**
 
       - **Ryuk Ransomware: A Targeted Campaign Break-Down | August 20, 2018**
       - **Hermes ransomware distributed to South Koreans via recent Flash zero-day**
 
-    - **WannaCry**
+    - **WannaCry (2017)**
 
-    - **Cerber**
+    - **Cerber (2016)**
 
-    - **Locky**
+    - **Locky (2016)**
 
     - **Petya**
 
@@ -55,16 +55,29 @@
       - **TeslaCrypt shuts down and Releases Master Decryption Key | May 18, 2016**
       - **https://github.com/Googulator/TeslaCrack**
 
-- ##### More Materials
+- **More Materials** 
   - **(2017, 3p) A brief study of Wannacry Threat: Ransomware Attack**
-
+  - **(2017, 12p) Ransomware: A Survey and Trends | Journal of Information Assurance and Security**
   - **(2017, 13p) PayBreak: Defense Against Cryptographic Ransomware | ASIA CCS '17**
-
     - **Alma ransomware: Analysis of a new ransomware threat (and a decrypter!). | Aug 24, '16**
-
   - **(2018, 12p) Towards Data Resilience: The Analytical Case of Crypto Ransomware Data Recovery Techniques**
+  - **(2018, 9p) Detection and Analysis Cerber Ransomware Based on Network Forensics Behavior**
+  - **(2018, 5p) The WannaCry Ransomeware, A Mega Cyber Attack and Their Consequences on the Modern India**
+  - **(2019, 12p) WannaCry Ransomware: Analysis of Infection, Persistence, Recovery Prevention and Propagation Mechanisms**
+  - **(2019, 16p) A Multi-Classifier Network-based Crypto Ransomware Detection System: A Case study of Locky Ransomware**
+  - **(2019, 21p) A Survey on Detection Techniques for Cryptographic Ransomware | IEEE**
 
-  - ##### (2016, 17p) Decryption Guide for TeslaCrypt Encrypted Files
+- **More Materials (etc)** 
+
+  - **(2016, 17p) Decryption Guide for TeslaCrypt Encrypted Files**
+  - **(2016, 15p) Cerber 랜섬웨어 분석 보고서 - 소만사 악성코드 분석 센터**
+- **(2017, 14p) PETYA CYBER ATTACK - CERTMU WHITEPAPER**
+  - **(2017, 13p) NARC Report - Petya-like Ransomware Analysis**
+  - **(2017, 21p) WannaCry-ransomware-attack - EY**
+  - **(2017, 18p) ENISA-WannaCry-v1.0 - ThaiCERT**
+  - **(2017, 23p) WannaCry_Report - pandasecurity**
+  - **(2018, 13p) McAfee_Labs_Threat_Advisory-Ransomware-Locky**
+  - **(2019, 29p) How Ransomware Attacks - SOPHOS**
 
 <br/>
 
@@ -72,7 +85,7 @@
 
 <br/>
 
-### ■ Ransomware Types
+### ○ Ransomware Types
 
 > There are mainly two types of ransomware: crypto and locker ransomware. However, ransomware belongs to the digital extortion category of cybercrime, which also contains other types of cyber crimes that aim to illicitly acquire or deny access to personal data in exchange for a monetary gain.
 
@@ -82,14 +95,14 @@
 
 <br/>
 
-#### **▷ Locker Ransomware**
+#### **■ Locker Ransomware**
 
 Locker ransomware works by preventing the victim from reaching their personal files through denying access to computing resources (e.g., locking the desktop or preventing the victim from logging in) and then demanding a ransom to regain access.
 Compared with crypto ransomware, typical locker ransomware types deny access to personal files using relatively simple techniques that can be overcome by any technical user; as a result, locker ransomware can be removed from the infected systems without affecting the underlying operating system and personal files.
 
 <br/>
 
-#### **▷ Crypto Ransomware**
+#### **■ Crypto Ransomware**
 
 This type of ransomware encrypts all personal data on the target machine, taking it hostage until the victim pays the ransom and obtains the decryption key from the attacker.
 
@@ -111,7 +124,7 @@ The majority of crypto ransomware infections will not damage the victim’s oper
 
 <br/>
 
-### ■ Differences Between Ransomware and Other Malware Types
+### ○ Differences Between Ransomware and Other Malware Types
 
 >  Ransomware is a subtype of malware; however, there are many distinct characteristics that distinguish it from other malware types.
 
@@ -132,7 +145,7 @@ The majority of crypto ransomware infections will not damage the victim’s oper
 
 <br/>
 
-### ■ Ransomware Symptoms
+### ○ Ransomware Symptoms
 
 > It is relatively easy to find out if you are affected by ransomware. The symptoms include the following:
 
@@ -153,7 +166,7 @@ The majority of crypto ransomware infections will not damage the victim’s oper
 
 <br/>
 
-### ■ Primary Targets of Ransomware Attacks
+### ○ Primary Targets of Ransomware Attacks
 
 ```
 Before 2015, the majority of ransomware victims were individuals; however, in 2015, ransomware operators shifted their attention to target enterprises and academic organizations to acquire more guaranteed money from their attacks.
@@ -216,7 +229,7 @@ Datto의 '채널 랜섬웨어 보고서 2018 글로벌 상태'에 따르면 애�
 
 <br/>
 
-### ■ Ransomware Families (The Most Prominent Ransomware Strains)
+### ○ Ransomware Families (The Most Prominent Ransomware Strains)
 
 ```
 Ransomware can be classified into groups using different criteria, for example, according to its function such as whether it is a locker or encryption ransomware.
@@ -229,7 +242,33 @@ Security experts prefer to classify ransomware into families according to its co
 
 <br/>
 
-#### ▶ Abaddon
+#### ■ BlueCrab (2019)
+
+안랩 ASEC 분석팀은 2019년 11월 6일 BlueCrab(=Sodinokibi) 과 동일한 외형정보로 국내 유포되는 신규 랜섬웨어를 발견하였다.
+
+해당 랜섬웨어는 아래의 그림에서 처럼 wscript.exe 프로세스에 의해 생성된 것으로 확인되어 Exploit kit을 통해 유포되는 것으로 추정된다.
+
+![image-20200921101146881](README.assets/image-20200921101146881.png)
+
+해당 랜섬웨어의 특징으로는 C:\드라이브는 암호화 하지않으며, D:\, E:\, F:\, I:\, U:\, G:\ 드라이브를 대상으로 암호화를 진행한다.
+
+랜섬노트 (qrja-readme.txt) 를 띄워 사용자에게 감염 사실을 알리는 것 뿐만 아니라,
+
+해당 랜섬 노트를 종료 시 메시지 박스(Attention!!!!!!! - Your computer is encrypted !!! For decryption see the file with instructions on your desktop !!!)를
+
+한번 더 실행한다.
+
+![image-20200921101220674](README.assets/image-20200921101220674.png)
+
+![image-20200921101234148](README.assets/image-20200921101234148.png)
+
+특이한 점은, 한글로 된 파일명일 경우 파일 암호화는 되지만 확장자 변경은 하지 못하는 것으로 확인된다.
+
+감염 후, 아래의 랜섬 페이지를 통해 복구 비용을 지불하도록 하고 있으며, 금액은 1,995$(USD)로 확인되었다.
+
+![image-20200921101307752](README.assets/image-20200921101307752.png)
+
+<br/>
 
 ![image-20200918155023439](README.assets/image-20200918155023439.png)
 
@@ -237,25 +276,17 @@ Security experts prefer to classify ransomware into families according to its co
 
 ![image-20200918155051147](README.assets/image-20200918155051147.png)
 
-
-
-
-
-
-
-
-
 <br/>
 
 -----
 
 <br/>
 
-#### ▶ Sodinokibi (2019)
+#### ■ Sodinokibi (2019)
 
 <br/>
 
-##### ▷ Sodinokibi ransomware can now encrypt open and locked files | May 10, 2020
+##### □ Sodinokibi ransomware can now encrypt open and locked files | May 10, 2020
 
 **By Lawrence Abrams**
 
@@ -302,15 +333,7 @@ Victims will have an easier time decrypting files after paying a ransom, but Sod
 
 <br/>
 
-#### ★ GANDCRAB v5.0.2 (2018)
-
-<br/>
-
------
-
-<br/>
-
-#### ▶ Ryuk (2018)
+#### ■ Ryuk (2018)
 
 ```
 Ryuk is a crypto ransomware specialized in targeted attacks against enterprises that can afford to pay its relatively big Bitcoin ransom (15 BTC to 50 BTC).
@@ -332,7 +355,7 @@ Checkpoint 보안 연구진은 Ryuk가 2017년 2월 처음 발견된 헤르메�
 
 <br/>
 
-##### Ryuk Ransomware: A Targeted Campaign Break-Down | August 20, 2018
+##### □ Ryuk Ransomware: A Targeted Campaign Break-Down | August 20, 2018
 
 **Research by: Itay Cohen, Ben Herzog**
 
@@ -599,7 +622,7 @@ cb0c1248d3899358a375888bb4e8f3fe
 
 <br/>
 
-##### Hermes ransomware distributed to South Koreans via recent Flash zero-day
+##### □ Hermes ransomware distributed to South Koreans via recent Flash zero-day
 
 Posted: March 14, 2018 by Malwarebytes Labs
 
@@ -819,7 +842,272 @@ The handle to the attacker’s RSA public key is passed, so the function CryptEx
 
 <br/>
 
-#### ★ WannaCry
+#### ■ WannaCry (2017)
+
+2017년 5월 12일, Shadow Brokers에 의해 공개된 취약점으로 시작된 워너크라이(이하 WannaCry)가 전세계를 강타했다.
+
+WannaCry는 미국 NSA에서 SMB 취약점을 이용하여 개발한 공격 도구를 Shadow Brokers가 공개하면서 악용된 것으로,
+
+2017년 5월 16일 기준으로 러시아와 유럽국가, 인도, 미국, 대만 등 세계 150개국 PC 30만대를 감염시킨 것으로 밝혀졌다.
+
+ 이처럼 WannaCry가 일반 랜섬웨어에 비해 크게 이슈화된 이유는 SMB취약점에서 찾을 수 있다.
+
+WannaCry는 네트워크에 연결된 상태이면 감염될 수 있는 웜형태의 전파방식이 내재되어 있는데 SMB취약점이 존재하는 다른 PC로 네트워크를 활용하여 전파된다. 
+
+WannaCry 유포 초기에 영국의 보안전문가가 유포를 제어할 수 있는 ‘Kill Switch’를 발견하여 악성코드의 확산을 일부 지연시킬 수 있었으나,
+
+WannaCry2.0으로 변종이 발생함에 따라 여전히 WannaCry로 인한 위협은 지금도 지속되고 있다.
+
+이에 따라 WannaCry에 대해서 분석해보고 대응방법에 대해서 알아보고자 한다.
+
+![image-20200921093709571](README.assets/image-20200921093709571.png)
+
+![image-20200921093736457](README.assets/image-20200921093736457.png)
+
+WannaCry 감염으로 인한 피해사례는 세계 곳곳에서 발견되었다.
+
+대표적인 감염사례로 영국 국민보건서비스(NHS) 산하 병원 40여개소가 피해를 입어 진료에 차질을 빚었으며,
+
+이웃나라 독일에서는 철도 시스템이 공격을 받아 일부 모니터에 랜섬웨어 감염화면이 노출되었다.
+
+가장 큰 피해를 입었다고 알려진 러시아는 여러 공공기관이 감염되었고, 그 중 정부기관인 내무부 PC도 포함된 것으로 알려졌다. 
+
+일본에서는 센다이역 JR 히가시니혼측 열차 지연 안내판 감염이나 대형 할인매장의 ‘이온 몰’ 감염 등 철도나 민간 기업까지 피해가 속출했다.
+
+중국은 공항, 출입국관리국을 비롯하여 각종 공공기관은 물론, 학교 공용 컴퓨터와 ATM까지 감염되는 등 러시아 못지 않게 피해가 상당히 컸다.
+
+국내에서도 CGV 영화관에서 일부 상영관 광고 서버가 감염되어 영화 시작 전 랜섬웨어 화면이 노출되는 등 전세계 적으로 공공, 민간, 의료 등 다양한 분야에서 피해사례들이 보고되었다.
+
+<br/>
+
+**영향 받는 시스템**
+
+Microsoft Windows XP Embedded SP3 x86
+
+Microsoft Windows XP Sp3 X86
+
+Microsoft Windows XP Sp2 X64
+
+Microsoft Windows Vista x64 Edition Service Pack 2 
+
+Microsoft Windows Vista Service Pack 2
+
+Microsoft Windows Server 2016 for x64-based Systems 
+
+Microsoft Windows Server 2012 R2 
+
+Microsoft Windows Server 2012 
+
+Microsoft Windows Server 2008 R2 for x64-based Systems SP1
+
+Microsoft Windows Server 2008 R2 for Itanium-based Systems SP1
+
+Microsoft Windows Server 2008 for x64-based Systems SP2
+
+Microsoft Windows Server 2008 for Itanium-based Systems SP2
+
+Microsoft Windows Server 2008 for 32-bit Systems SP2
+
+Microsoft Windows Server 2003 x86 SP2
+
+Microsoft Windows Server 2003 x64 SP2
+
+Microsoft Windows RT 8.1
+
+Microsoft Windows 8.1 for x64-based Systems 
+
+Microsoft Windows 8.1 for 32-bit Systems 
+
+Microsoft Windows 8 X86
+
+Microsoft Windows 8 X64
+
+Microsoft Windows 7 for x64-based Systems SP1
+
+Microsoft Windows 7 for 32-bit Systems SP1
+
+Microsoft Windows 10 Version 1607 for x64-based Systems 
+
+Microsoft Windows 10 Version 1607 for 32-bit Systems 
+
+Microsoft Windows 10 version 1511 for x64-based Systems 
+
+Microsoft Windows 10 version 1511 for 32-bit Systems 
+
+Microsoft Windows 10 for x64-based Systems 
+
+Microsoft Windows 10 for 32-bit Systems 
+
+<br/>
+
+**WannaCry의 특징**
+
+ WannaCry는 웜과 랜섬웨어 모듈로 이루어져 일명 랜섬웜(Ransomworm)이라고 불린다.
+
+랜섬웨어 모듈은 보통의 랜섬웨어와 같이 감염된 시스템의 파일을 암호화하며 웜 모듈에 의해 구동된다.
+
+웜 모듈은 Windows SMB 서버 원격 코드 실행 취약점(CVE-2017-0144,0145)을 이용하여 다른 시스템으로 mssecsvc.exe 파일을 전파한다.
+
+![image-20200921093910593](README.assets/image-20200921093910593.png)
+
+감염된 시스템으로부터 전파된 mssecsvc.exe는 공격자가 의도한 도메인(Kill Switch)으로 접속 시도한다.
+
+해당 도메인으로부터 응답 값을 받지 못하면 mssecsvc2.0 서비스가 실행된다.  
+
+mssecsvc2.0 서비스는 공격자에게 지불할 비트코인 주소와 파일 복호화에 필요한 KEY를 전달받기 위해tor.exe 파일을 다운로드하며,
+
+통신이 가능한 IP 주소와 활성화된 TCP 445포트를 찾는다.
+
+이 과정이 끝나면 SMB 취약점을 이용하여 악성코드를 다른 시스템으로 전파한다.
+
+또한, t.wnry에 의해 시스템에 존재하는 파일들을 각각 AES 방식으로 암호화하고 파일 암호화에 사용한 KEY를 RSA 방식으로 다시 암호화한다.
+
+마지막으로 암호화가 끝난 원본 파일을 taskdl.exe을 이용해 삭제한다.
+
+**1) SMB(Server Message Block) 취약점**
+
+SMB 프로토콜은 사용자가 원격 서버에 있는 파일이나 기타 리소스에 액세스할 수 있도록 네트워크 파일 공유 서비스를 제공하는 프로토콜로 원격 서버의 파일을 읽거나 수정할 수 있다. 
+
+SMB 취약점은 대상 시스템에 조작된 패킷을 보내 임의의 코드가 실행되는 것으로 SMB 통신이 가능할때 공격자가 다수의 SMB 요청하여 대상 시스템에 메모리 충돌을 발생시킨다.
+
+메모리 충돌로 인해 시스템이 재부팅되면 SMB 요청(공격자가 원하는 코드)과 부팅 명령어가 윈도우 커널에서 함께 실행되어 대상 시스템에 악성코드가 주입된다.
+
+**2) Kill Switch**
+
+ Kill Switch는 대상 시스템에서 도메인(아래 참고) 접속 시도 시 해당 도메인의 존재 여부로 악성코드를 전파하거나 멈출 수 있도록 공격자가 악성코드에 추가한 기능이다.
+
+여기서 Kill Switch로 발견된 도메인은 정상 접속이 가능해야 악성코드에 감염되지 않으므로 해당 도메인을 차단하지 않도록 주의해야 한다.
+
+ ```
+iuqerfsodp9ifjaposdfjhgosurijfaewrwergwea.com
+ifferfsodp9ifjaposdfjhgosurijfaewrwergwea.com
+ ```
+
+**3) tor.exe**
+
+ Worm module에 첨부된 tor 다운로드 경로(아래 참고)를 참조하여 tor.exe 파일을 다운로드 한다. 
+
+```
+www.dropbox.com/s/yw3rvyotvb4gcnh/t1.zip?dl=1
+dist.torproject.org/torbrowser/6.5.1/tor-win32-0.2.9.10.zip
+```
+
+다운로드가 완료되면 TaskData 디렉터리가 생성되고, 하위 경로에 tor.exe 파일과 tor.exe 실행에 필요한 9개의 dll 파일이 같이 생성된다.
+
+tor.exe 파일은 프로세스 taskhosts.exe로 변조되어 실행되고 공격자와 피해 시스템간의 통신을 위해 tor 서버와 네트워크 접속을 시도한다. 
+
+![image-20200921094107276](README.assets/image-20200921094107276.png)
+
+<br/>
+
+**WannaCry 상세 과정**
+
+**1) Worm module**
+
+![image-20200921094333137](README.assets/image-20200921094333137.png)
+
+![image-20200921094400263](README.assets/image-20200921094400263.png)
+
+![image-20200921094417434](README.assets/image-20200921094417434.png)
+
+![image-20200921094507392](README.assets/image-20200921094507392.png)
+
+![image-20200921094520685](README.assets/image-20200921094520685.png)
+
+**2) Ransom module**
+
+Worm module에 의해 mssecsvc.exe가 전파되어 mssecsvc2.0 서비스가 실행되면 본격적으로 감염 시스템에 존재하는 파일들을 암호화하기 시작한다.
+
+![image-20200921094616024](README.assets/image-20200921094616024.png)
+
+![image-20200921094645413](README.assets/image-20200921094645413.png)
+
+![image-20200921094657984](README.assets/image-20200921094657984.png)
+
+![image-20200921094711078](README.assets/image-20200921094711078.png)
+
+![image-20200921094723129](README.assets/image-20200921094723129.png)
+
+![image-20200921094744190](README.assets/image-20200921094744190.png)
+
+**AES 암호화 방식**
+
+AES 암호화 방식은 대칭형 암호화 방식으로 암호화 및 복호화에 동일한 KEY(비밀키)를 사용한다.
+
+비대칭형 암호화 방식에 비해 암/복호화 처리속도가 빠르고 암호문의 크기가 증가하지 않는 장점이 있지만,
+
+암호화에 사용한 비밀키를 직접 전달하기 때문에 sniffing과 같은 공격에 매우 취약하다.
+
+ **RSA 암호화 방식**
+
+RSA 암호화 방식은 암호화에 사용된 KEY(공개키)와 복호화 KEY(개인키)가 서로 다른 KEY로써 대칭형 암호화 방식에서 KEY가 직접 노출되는 문제를 보완한 대표적인 비대칭형 암호화 방식이다.
+
+공개키와 개인키는 하나의 쌍으로 공개키로 암호화된 문서는 무조건 해당 공개키와 한 쌍을 이루는 개인키로만 복호화를 할 수 있다.
+
+![image-20200921094817805](README.assets/image-20200921094817805.png)
+
+![image-20200921094831040](README.assets/image-20200921094831040.png)
+
+![image-20200921094844327](README.assets/image-20200921094844327.png)
+**사용한 tor 네트워크 주소**
+
+```
+57g7spgrzlojinas.onion
+76jdd2ir2embyv47.onion
+cwwnhwhlz52maqm7.onion
+gx7ekbenv2riucmf.onion
+sqjolphimrr7jqw6.onion
+Xxlvbrloxvriy2c5.onion
+xxlvbrloxvriy2c5.onion
+```
+
+<br/>
+
+**대응방안**
+
+![image-20200921095027865](README.assets/image-20200921095027865.png)
+
+![image-20200921095047472](README.assets/image-20200921095047472.png)
+
+![image-20200921095109669](README.assets/image-20200921095109669.png)
+
+![image-20200921095832559](README.assets/image-20200921095832559.png)
+
+![image-20200921095854552](README.assets/image-20200921095854552.png)
+
+| **영향 받는 운영체제 버전**                                  | **보안** **업데이트명** |
+| ------------------------------------------------------------ | ----------------------- |
+| Microsoft Windows Vista Service Pack 2                       | 3177186                 |
+| Microsoft Windows Vista x64 Edition Service Pack 2           | 3177186                 |
+| Microsoft Windows Server 2008 for 32-bit Systems SP2         | 3177186                 |
+| Microsoft Windows Server 2008 for x64-based Systems SP2      | 3177186                 |
+| Microsoft Windows Server 2008 for Itanium-based Systems SP2  | 3177186                 |
+| Microsoft Windows 7 for 32-bit Systems SP1                   | 3212646(월별롤업)       |
+| Microsoft Windows 7 for x64-based Systems SP1                | 3212646(월별롤업)       |
+| Microsoft Windows Server 2008 R2 for x64-based Systems SP1   | 3212646(월별롤업)       |
+| Microsoft Windows Server 2008 R2 for Itanium-based Systems SP1 | 3212646(월별롤업)       |
+| Microsoft Windows 8.1 for 32-bit Systems                     | 3205401(월별롤업)       |
+| Microsoft Windows 8.1 for x64-based Systems                  | 3205401(월별롤업)       |
+| Microsoft Windows Server 2012                                | 3205409(월별롤업)       |
+| Microsoft Windows Server 2012 R2                             | 3205401(월별롤업)       |
+| Microsoft Windows RT 8.1                                     | 3205401(월별롤업)       |
+| Microsoft Windows 10 for 32-bit Systems                      | 3210720                 |
+| Microsoft Windows 10 for x64-based Systems                   | 3210720                 |
+| Microsoft Windows 10 version 1511 for 32-bit Systems         | 3210721                 |
+| Microsoft Windows 10 version 1511 for x64-based Systems      | 3210721                 |
+| Microsoft Windows 10 Version 1607 for 32-bit Systems         | 3213986                 |
+| Microsoft Windows 10 Version 1607 for x64-based Systems      | 3213986                 |
+| Microsoft Windows Server 2016 for x64-based Systems          | 3213986                 |
+
+*[표] 운영체제 별 보안 업데이트 정보*
+
+<br/>
+
+![image-20200921100000836](README.assets/image-20200921100000836.png)
+
+![image-20200921100011909](README.assets/image-20200921100011909.png)
+
+![image-20200921100028221](README.assets/image-20200921100028221.png)
 
 <br/>
 
@@ -827,7 +1115,51 @@ The handle to the attacker’s RSA public key is passed, so the function CryptEx
 
 <br/>
 
-#### ★ Cerber
+#### ■ Cerber (2016)
+
+Ransom.Cerber is a ransomware application that uses a ransomware-as-a-service (RaaS) model where affiliates purchase and then subsequently spread the malware.
+
+Commissions are paid to the developers for the use of the malware.
+
+Ransom.Cerber uses strong encryption, and there are currently no free decryptors available.
+
+<br/>
+
+**Symptoms**
+
+Ransom.Cerber may run silently in the background during the encryption phase and not provide any indication of infection to the user.
+
+Ransom.Cerber may prevent the execution of Antivirus programs and other Microsoft Windows security features and may prevent system restoration as a means to solicit payment.
+
+Ransom.Cerber may display a warning after successful encryption of the victim machine.
+
+![image-20200921102435884](README.assets/image-20200921102435884.png)
+
+<br/>
+
+**Type and source of infection**
+
+Cerber.Ransomware may be distributed using various methods.
+
+This software may be packaged with free online software, or could be disguised as a harmless program and distributed by email.
+
+Alternatively, this software may be installed by websites using software vulnerabilities.
+
+Infections that occur in this manner are usually silent and happen without user knowledge or consent.
+
+<br/>
+
+**Aftermath**
+
+Systems affected by ransomware are rendered unusable due to files that are typically used for regular operations being encrypted.
+
+Affected users who choose to pay the threat actors behind ransomware campaigns in exchange for access to data may find that they don’t get their files back.
+
+There is also no sure way to know that threat actors will honor their end of the deal after paying the ransom.
+
+Affected users who chose to pay the threat actors may also find themselves likely targets for future ransomware campaigns.
+
+Data held hostage that wasn’t given back to users or deleted after the ransom has been paid can be used by threat actors either to (a) sell on the black market or (b) create a profile of the user they can use for fraud.
 
 <br/>
 
@@ -835,7 +1167,49 @@ The handle to the attacker’s RSA public key is passed, so the function CryptEx
 
 <br/>
 
-#### ★ Locky
+#### ■ Locky (2016)
+
+**Trojan.Ransom.LockyCrypt 분석보고서 / 출처: https://blog.alyac.co.kr/589 [이스트시큐리티 알약 블로그]**
+
+**악성파일 분석(zxcvb.exe)**
+
+Locky 랜섬웨어는 최근에는 자바스크립트로 유포되고 있지만 이전에는 이메일에 word파일을 첨부하고 word파일을 실행하면 매크로가 포함되어 Locky 랜섬웨어를 다운로드 받게 되어 있었습니다.
+
+![image-20200921103756280](README.assets/image-20200921103756280.png)
+
+![image-20200921103810166](README.assets/image-20200921103810166.png)
+
+![image-20200921103828473](README.assets/image-20200921103828473.png)
+
+![image-20200921103929312](README.assets/image-20200921103929312.png)
+
+![image-20200921103942955](README.assets/image-20200921103942955.png)
+
+![image-20200921103954762](README.assets/image-20200921103954762.png)
+
+![image-20200921104008552](README.assets/image-20200921104008552.png)
+
+![image-20200921104020179](README.assets/image-20200921104020179.png)
+
+![image-20200921104032311](README.assets/image-20200921104032311.png)
+
+![image-20200921104042857](README.assets/image-20200921104042857.png)
+
+![image-20200921104101723](README.assets/image-20200921104101723.png)
+
+![image-20200921104114534](README.assets/image-20200921104114534.png)
+
+![image-20200921104133514](README.assets/image-20200921104133514.png)
+
+![image-20200921104208469](README.assets/image-20200921104208469.png)
+
+![image-20200921104224112](README.assets/image-20200921104224112.png)
+
+![image-20200921104242609](README.assets/image-20200921104242609.png)
+
+![image-20200921104257594](README.assets/image-20200921104257594.png)
+
+![image-20200921104310809](README.assets/image-20200921104310809.png)
 
 <br/>
 
@@ -867,7 +1241,7 @@ The handle to the attacker’s RSA public key is passed, so the function CryptEx
 
 <br/>
 
-#### ▶ TeslaCrypt (2016)
+#### ■ TeslaCrypt (2016)
 
 TeslaCrypt was a ransomware trojan.
 It is now defunct, and its master key was released by the developers.
@@ -895,7 +1269,7 @@ A full behavior report, which shows BehaviorGraphs and ExecutionGraphs was publi
 
 <br/>
 
-##### ▷ TeslaCrypt shuts down and Releases Master Decryption Key | May 18, 2016
+##### □ TeslaCrypt shuts down and Releases Master Decryption Key | May 18, 2016
 
 In surprising end to TeslaCrypt, the developers shut down their ransomware and released the master decryption key. Over the past few weeks, an analyst for ESET had noticed that the developers of TeslaCrypt have been slowly closing their doors, while their previous distributors have been switching over to distributing the CryptXXX ransomware.  
 
@@ -935,7 +1309,7 @@ When TeslaDecoder is done decrypting your files, it will show a summary in the m
 
 <br/>
 
-##### ▷ https://github.com/Googulator/TeslaCrack
+##### □ https://github.com/Googulator/TeslaCrack
 
 **TeslaCrack - decrypt files crypted by TeslaCrypt ransomware**
 
@@ -1529,7 +1903,7 @@ if __name__=='__main__':
 
 <br/>
 
-#### ▶ CryptoWall (2014)
+#### ■ CryptoWall (2014)
 
 CryptoWall Ransomware Threat Analysis | WEDNESDAY, AUGUST 27, 2014
 
@@ -1976,7 +2350,7 @@ To mitigate exposure to the CryptoWall malware, CTU researchers recommend that c
 
 <br/>
 
-### (2017) A brief study of Wannacry Threat: Ransomware Attack
+### ○ (2017) A brief study of Wannacry Threat: Ransomware Attack
 
 ```
 Recently Ransomware virus software spread like a cyclone winds.
@@ -2037,7 +2411,7 @@ Following are some of the preventive measure to avoid ransomware:
 
 <br/>
 
-### (2017) PayBreak: Defense Against Cryptographic Ransomware | ASIA CCS '17
+### ○ (2017) PayBreak: Defense Against Cryptographic Ransomware | ASIA CCS '17
 
 ```
 Similar to criminals in the physical world, cyber-criminals use a variety of illegal and immoral means to achieve monetary gains. Recently, malware known as ransomware started to leverage strong cryptographic primitives to hold victims' computer files "hostage" until a ransom is paid. Victims, with no way to defend themselves, are often advised to simply pay. Existing defenses against ransomware rely on ad-hoc mitigations that target the incorrect use of cryptography rather than generic live protection. To fill this gap in the defender's arsenal, we describe the approach, prototype implementation, and evaluation of a novel, automated, and most importantly proactive defense mechanism against ransomware. Our prototype, called PayBreak, effectively combats ransomware, and keeps victims' files safe.
@@ -2342,7 +2716,7 @@ namespace ALDecrypter
 
 -------
 
-### **(2018) Towards Data Resilience: The Analytical Case of Crypto Ransomware Data Recovery Techniques**
+### **○ (2018) Towards Data Resilience: The Analytical Case of Crypto Ransomware Data Recovery Techniques**
 
 ```
 Crypto ransomware has earned an infamousreputation in the malware landscape and its sound sends alot of shivers to many despite being a new entrant. Themedia has not helped matters even as the myths andinaccuracies surrounding crypto ransomware continue todeepen. It’s been purported that once crypto ransomwareattacks, the victim is left with no option but to pay inorder to retrieve the encrypted data, and that without aguarantee, or risk losing the data forever. Securityresearchers are inadvertently thrown into a cat-and-mousechase to catch up with the latest vices of the aforesaid inorder to provide data resilience. In this paper, we debunkthe myths surrounding loss of data via a cryptoransomware attack. Using a variety of crypto ransomwaresamples, we employ reverse engineering and dynamicanalysis to evaluate the underlying attack structures anddata deletion techniques employed by the ransomware.Further, we expose the data deletion techniques used byransomware to prevent data recovery and suggest howsuch could be countered. From the results, we furtherpresent observed sandbox evasion techniques employedby ransomware against both static and dynamic analysisin an effort to obfuscate its operations and subsequentlyprevent data recovery. Our analyses have led us to theconclusion that no matter how devastating a cryptoransomware attack might appear, the key to data recoveryoptions lies in the underlying attack structure and theimplemented data deletion methodology.
@@ -2365,5 +2739,38 @@ Crypto ransomware has earned an infamousreputation in the malware landscape and 
 <br/>
 
 -----
+
+<br/>
+
+### **○ (2019, 21p) A Survey on Detection Techniques for Cryptographic Ransomware | IEEE**
+
+```
+Crypto-ransomware is a type of malware that encrypts user files, deletes the original data, and asks for a ransom to recover the hijacked documents.
+It is a cyber threat that targets both companies and residential users, and has spread in recent years because of its lucrative results.
+Several articles have presented classifications of ransomware families and their typical behaviour.
+These insights have stimulated the creation of detection techniques for antivirus and firewall software.
+However, because the ransomware scene evolves quickly and aggressively, these studies quickly become outdated.
+In this study, we surveyed the detection techniques that the research community has developed in recent years.
+We compared the different approaches and classified the algorithms based on the input data they obtain from ransomware actions, and the decision procedures they use to reach a classification decision between benign or malign applications.
+This is a detailed survey that focuses on detection algorithms, compared to most previous studies that offer a survey of ransomware families or isolated proposals of detection algorithms.
+We also compared the results of these proposals.
+```
+
+크립토 랜섬웨어는 사용자 파일을 암호화하고 원본 데이터를 삭제하며 납치된 문서를 복구하기 위해 몸값을 요구하는 악성 프로그램의 일종이다.
+
+기업과 일반 이용자 모두를 대상으로 하는 사이버 위협으로 최근 몇 년 사이 수익성 좋은 결과 때문에 확산됐다.
+
+몇몇 기사에서는 랜섬웨어 제품군 분류와 그들의 전형적인 행동을 제시했다.
+
+이러한 통찰력은 바이러스 백신과 방화벽 소프트웨어에 대한 탐지 기술의 창조를 자극했다.
+
+그러나 랜섬웨어 현장이 빠르고 공격적으로 진화하기 때문에 이러한 연구는 금방 시대에 뒤떨어진다.
+
+본 연구에서는 최근 몇 년 동안 연구계가 발전해 온 검출 기법을 조사했다.
+
+우리는 서로 다른 접근방식을 비교하고 랜섬웨어 조치에서 얻은 입력 데이터와 그들이 양성 애플리케이션과 악성 애플리케이션 사이의 분류 결정에 도달하기 위해 사용하는 의사결정 절차를 바탕으로 알고리즘을 분류했다.
+
+이는 랜섬웨어 가족에 대한 조사나 검출 알고리즘에 대한 고립된 제안을 제공하는 대부분의 기존 연구와 비교했을 때 검출 알고리즘에 초점을 맞춘 상세 조사다.
+우리는 또한 이 제안들의 결과를 비교했다.
 
 <br/>
