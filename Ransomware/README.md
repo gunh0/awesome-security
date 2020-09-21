@@ -1,4 +1,4 @@
-# Ransomware Recovery Technology Survey
+# Ransomware Survey
 
 > Ransomware is a type of malware that denies access to user files, sometimes encrypting the entire hard drive and even all the attached external hard drives and network shares, after which it demands a ransom from the user to regain access to the system and stored information.
 
@@ -10,48 +10,32 @@
 
 ## INDEX
 
-- **Ransomware Revealed**
+### **Ransomware Revealed**
 
-  - **Ransomware Types**
-
-    - **Locker Ransomware**
-    - **Crypto Ransomware**
-
-  - **Differences Between Ransomware and Other Malware Types**
-
-  - **Ransomware Symptoms**
-
-  - **Primary Targets of Ransomware Attacks**
-
-  - **Ransomware Families**
-
-    - **BlueCrab (2019)**
-
-    - **Sodinokibi (2019)**
-
-    - **GANDCRAB v5.0.2 (2018)**
-
-    - **Ryuk (2018)**
-
-      - **Ryuk Ransomware: A Targeted Campaign Break-Down | August 20, 2018**
-      - **Hermes ransomware distributed to South Koreans via recent Flash zero-day**
-
-    - **WannaCry (2017)**
-
-    - **Cerber (2016)**
-
-    - **Locky (2016)**
-
-    - **Petya (2016)**
-
-    - **SamSam (2016)**
-
-    - **TeslaCrypt (2016)**
-- **TeslaCrypt shuts down and Releases Master Decryption Key | May 18, 2016**
-      - **https://github.com/Googulator/TeslaCrack**
-
+- [**Ransomware Types**](#●-Ransomware-Types)
+  - **Locker Ransomware**
+   - **Crypto Ransomware**
+- [**Differences Between Ransomware and Other Malware Types**](#●-Differences-Between-Ransomware-and-Other-Malware-Types)
+- **Ransomware Symptoms**
+- **Primary Targets of Ransomware Attacks**
+- [**Ransomware Families**](#●-Ransomware-Families-(The-Most-Prominent-Ransomware-Strains))
+  - ***BlueCrab (2019)***
+  - ***Sodinokibi (2019)***
+  - **Sodinokibi ransomware can now encrypt open and locked files | May 10, 2020**
+  - ***GANDCRAB v5.0.2 (2018)***
+  - [***Ryuk (2018)***](#○-Ryuk-(2018))
+  - **Ryuk Ransomware: A Targeted Campaign Break-Down | August 20, 2018**
+    - **Hermes ransomware distributed to South Koreans via recent Flash zero-day**
+  - [***WannaCry (2017)***](#○-WannaCry-(2017))
+  - [***Cerber (2016)***](#○-Cerber-(2016))
+  - ***Locky (2016)***
+  - [***Petya (2016)***](#○-Petya-(2016))
+  - ***SamSam (2016)***
+  - [***TeslaCrypt (2016)***](#○-TeslaCrypt-(2016))
+    - **TeslaCrypt shuts down and Releases Master Decryption Key | May 18, 2016**
+    - **https://github.com/Googulator/TeslaCrack**
 - **More Materials** 
-  - **(2017, 3p) A brief study of Wannacry Threat: Ransomware Attack**
+  - [**(2017, 3p) A brief study of Wannacry Threat: Ransomware Attack**](#○-(2017)-A-brief-study-of-Wannacry-Threat:-Ransomware-Attack)
   - **(2017, 12p) Ransomware: A Survey and Trends | Journal of Information Assurance and Security**
   - **(2017, 13p) PayBreak: Defense Against Cryptographic Ransomware | ASIA CCS '17**
     - **Alma ransomware: Analysis of a new ransomware threat (and a decrypter!). | Aug 24, '16**
@@ -60,13 +44,12 @@
   - **(2018, 5p) The WannaCry Ransomeware, A Mega Cyber Attack and Their Consequences on the Modern India**
   - **(2019, 12p) WannaCry Ransomware: Analysis of Infection, Persistence, Recovery Prevention and Propagation Mechanisms**
   - **(2019, 16p) A Multi-Classifier Network-based Crypto Ransomware Detection System: A Case study of Locky Ransomware**
-  - **(2019, 21p) A Survey on Detection Techniques for Cryptographic Ransomware | IEEE**
-
+  - [**(2019, 21p) A Survey on Detection Techniques for Cryptographic Ransomware | IEEE**](#**○-(2019)-A-Survey-on-Detection-Techniques-for-Cryptographic-Ransomware-|-IEEE**)
 - **More Materials (etc)** 
-- **(2016, 17p) Decryption Guide for TeslaCrypt Encrypted Files**
+  - **(2016, 17p) Decryption Guide for TeslaCrypt Encrypted Files**
   - **(2016, 15p) Cerber 랜섬웨어 분석 보고서 - 소만사 악성코드 분석 센터**
   - **(2017, 14p) PETYA CYBER ATTACK - CERTMU WHITEPAPER**
-- **(2017, 13p) NARC Report - Petya-like Ransomware Analysis**
+  - **(2017, 13p) NARC Report - Petya-like Ransomware Analysis**
   - **(2017, 21p) WannaCry-ransomware-attack - EY**
   - **(2017, 18p) ENISA-WannaCry-v1.0 - ThaiCERT**
   - **(2017, 23p) WannaCry_Report - pandasecurity**
@@ -80,7 +63,7 @@
 
 <br/>
 
-### ○ Ransomware Types
+### ● Ransomware Types
 
 > There are mainly two types of ransomware: crypto and locker ransomware. However, ransomware belongs to the digital extortion category of cybercrime, which also contains other types of cyber crimes that aim to illicitly acquire or deny access to personal data in exchange for a monetary gain.
 
@@ -90,14 +73,14 @@
 
 <br/>
 
-#### **■ Locker Ransomware**
+#### ○ Locker Ransomware
 
 Locker ransomware works by preventing the victim from reaching their personal files through denying access to computing resources (e.g., locking the desktop or preventing the victim from logging in) and then demanding a ransom to regain access.
 Compared with crypto ransomware, typical locker ransomware types deny access to personal files using relatively simple techniques that can be overcome by any technical user; as a result, locker ransomware can be removed from the infected systems without affecting the underlying operating system and personal files.
 
 <br/>
 
-#### **■ Crypto Ransomware**
+#### ○ Crypto Ransomware
 
 This type of ransomware encrypts all personal data on the target machine, taking it hostage until the victim pays the ransom and obtains the decryption key from the attacker.
 
@@ -119,7 +102,7 @@ The majority of crypto ransomware infections will not damage the victim’s oper
 
 <br/>
 
-### ○ Differences Between Ransomware and Other Malware Types
+### ● Differences Between Ransomware and Other Malware Types
 
 >  Ransomware is a subtype of malware; however, there are many distinct characteristics that distinguish it from other malware types.
 
@@ -140,7 +123,7 @@ The majority of crypto ransomware infections will not damage the victim’s oper
 
 <br/>
 
-### ○ Ransomware Symptoms
+### ● Ransomware Symptoms
 
 > It is relatively easy to find out if you are affected by ransomware. The symptoms include the following:
 
@@ -161,7 +144,7 @@ The majority of crypto ransomware infections will not damage the victim’s oper
 
 <br/>
 
-### ○ Primary Targets of Ransomware Attacks
+### ● Primary Targets of Ransomware Attacks
 
 ```
 Before 2015, the majority of ransomware victims were individuals; however, in 2015, ransomware operators shifted their attention to target enterprises and academic organizations to acquire more guaranteed money from their attacks.
@@ -224,7 +207,7 @@ Datto의 '채널 랜섬웨어 보고서 2018 글로벌 상태'에 따르면 애�
 
 <br/>
 
-### ○ Ransomware Families (The Most Prominent Ransomware Strains)
+### ● Ransomware Families (The Most Prominent Ransomware Strains)
 
 ```
 Ransomware can be classified into groups using different criteria, for example, according to its function such as whether it is a locker or encryption ransomware.
@@ -237,7 +220,7 @@ Security experts prefer to classify ransomware into families according to its co
 
 <br/>
 
-#### ■ BlueCrab (2019)
+#### ○ BlueCrab (2019)
 
 안랩 ASEC 분석팀은 2019년 11월 6일 BlueCrab(=Sodinokibi) 과 동일한 외형정보로 국내 유포되는 신규 랜섬웨어를 발견하였다.
 
@@ -277,11 +260,11 @@ Security experts prefer to classify ransomware into families according to its co
 
 <br/>
 
-#### ■ Sodinokibi (2019)
+#### ○ Sodinokibi (2019)
 
 <br/>
 
-##### □ Sodinokibi ransomware can now encrypt open and locked files | May 10, 2020
+##### ■ Sodinokibi ransomware can now encrypt open and locked files | May 10, 2020
 
 **By Lawrence Abrams**
 
@@ -328,7 +311,7 @@ Victims will have an easier time decrypting files after paying a ransom, but Sod
 
 <br/>
 
-#### ■ Ryuk (2018)
+#### ○ Ryuk (2018)
 
 ```
 Ryuk is a crypto ransomware specialized in targeted attacks against enterprises that can afford to pay its relatively big Bitcoin ransom (15 BTC to 50 BTC).
@@ -350,7 +333,7 @@ Checkpoint 보안 연구진은 Ryuk가 2017년 2월 처음 발견된 헤르메�
 
 <br/>
 
-##### □ Ryuk Ransomware: A Targeted Campaign Break-Down | August 20, 2018
+##### ■ Ryuk Ransomware: A Targeted Campaign Break-Down | August 20, 2018
 
 **Research by: Itay Cohen, Ben Herzog**
 
@@ -617,7 +600,7 @@ cb0c1248d3899358a375888bb4e8f3fe
 
 <br/>
 
-##### □ Hermes ransomware distributed to South Koreans via recent Flash zero-day
+##### ■ Hermes ransomware distributed to South Koreans via recent Flash zero-day
 
 Posted: March 14, 2018 by Malwarebytes Labs
 
@@ -837,7 +820,7 @@ The handle to the attacker’s RSA public key is passed, so the function CryptEx
 
 <br/>
 
-#### ■ WannaCry (2017)
+#### ○ WannaCry (2017)
 
 2017년 5월 12일, Shadow Brokers에 의해 공개된 취약점으로 시작된 워너크라이(이하 WannaCry)가 전세계를 강타했다.
 
@@ -1110,7 +1093,7 @@ xxlvbrloxvriy2c5.onion
 
 <br/>
 
-#### ■ Cerber (2016)
+#### ○ Cerber (2016)
 
 Ransom.Cerber is a ransomware application that uses a ransomware-as-a-service (RaaS) model where affiliates purchase and then subsequently spread the malware.
 
@@ -1162,7 +1145,7 @@ Data held hostage that wasn’t given back to users or deleted after the ransom 
 
 <br/>
 
-#### ■ Locky (2016)
+#### ○ Locky (2016)
 
 **Trojan.Ransom.LockyCrypt 분석보고서 / 출처: https://blog.alyac.co.kr/589 [이스트시큐리티 알약 블로그]**
 
@@ -1212,7 +1195,7 @@ Locky 랜섬웨어는 최근에는 자바스크립트로 유포되고 있지만 
 
 <br/>
 
-#### ■ Petya (2016)
+#### ○ Petya (2016)
 
 **History**
 Petya was discovered in March 2016; Check Point noted that while it had achieved fewer infections than other ransomware active in early 2016, such as CryptoWall, it contained notable differences in operation that caused it to be "immediately flagged as the next step in ransomware evolution".
@@ -1284,7 +1267,7 @@ This characteristic, along with other unusual signs in comparison to WannaCry (i
 
 <br/>
 
-#### ■ SamSam (2016)
+#### ○ SamSam (2016)
 
 **SAMSAM 랜섬웨어의 등장으로 살펴보는 패칭의 중요성**
 
@@ -1302,7 +1285,7 @@ This characteristic, along with other unusual signs in comparison to WannaCry (i
 
 <br/>
 
-#### ■ TeslaCrypt (2016)
+#### ○ TeslaCrypt (2016)
 
 TeslaCrypt was a ransomware trojan.
 It is now defunct, and its master key was released by the developers.
@@ -1328,9 +1311,11 @@ A full behavior report, which shows BehaviorGraphs and ExecutionGraphs was publi
 
 <br/>
 
+-------
+
 <br/>
 
-##### □ TeslaCrypt shuts down and Releases Master Decryption Key | May 18, 2016
+##### ■ TeslaCrypt shuts down and Releases Master Decryption Key | May 18, 2016
 
 In surprising end to TeslaCrypt, the developers shut down their ransomware and released the master decryption key. Over the past few weeks, an analyst for ESET had noticed that the developers of TeslaCrypt have been slowly closing their doors, while their previous distributors have been switching over to distributing the CryptXXX ransomware.  
 
@@ -1368,9 +1353,11 @@ When TeslaDecoder is done decrypting your files, it will show a summary in the m
 
 <br/>
 
+-------
+
 <br/>
 
-##### □ https://github.com/Googulator/TeslaCrack
+##### ■ https://github.com/Googulator/TeslaCrack
 
 **TeslaCrack - decrypt files crypted by TeslaCrypt ransomware**
 
@@ -1964,7 +1951,7 @@ if __name__=='__main__':
 
 <br/>
 
-#### ■ CryptoWall (2014)
+#### ○ CryptoWall (2014)
 
 CryptoWall Ransomware Threat Analysis | WEDNESDAY, AUGUST 27, 2014
 
@@ -2507,6 +2494,10 @@ PayBreak은 이러한 키의 사용을 관찰하고 에스크로 보관하며, �
 
 <br/>
 
+-------
+
+<br/>
+
 #### ■ Alma ransomware: Analysis of a new ransomware threat (and a decrypter!). | Aug 24, '16
 
 - https://info.phishlabs.com/blog/alma-ransomware-analysis-of-a-new-ransomware-threat-and-a-decrypter.
@@ -2777,6 +2768,8 @@ namespace ALDecrypter
 
 -------
 
+<br/>
+
 ### **○ (2018) Towards Data Resilience: The Analytical Case of Crypto Ransomware Data Recovery Techniques**
 
 ```
@@ -2803,7 +2796,7 @@ Crypto ransomware has earned an infamousreputation in the malware landscape and 
 
 <br/>
 
-### **○ (2019, 21p) A Survey on Detection Techniques for Cryptographic Ransomware | IEEE**
+### **○ (2019) A Survey on Detection Techniques for Cryptographic Ransomware | IEEE**
 
 ```
 Crypto-ransomware is a type of malware that encrypts user files, deletes the original data, and asks for a ransom to recover the hijacked documents.
