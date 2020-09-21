@@ -42,17 +42,12 @@
 
     - **Locky (2016)**
 
-    - **Petya**
+    - **Petya (2016)**
 
-    - **SamSam**
-
-    - **DMA Locker**
-
-    - **CryptoWall**
+    - **SamSam (2016)**
 
     - **TeslaCrypt (2016)**
-
-      - **TeslaCrypt shuts down and Releases Master Decryption Key | May 18, 2016**
+- **TeslaCrypt shuts down and Releases Master Decryption Key | May 18, 2016**
       - **https://github.com/Googulator/TeslaCrack**
 
 - **More Materials** 
@@ -68,15 +63,15 @@
   - **(2019, 21p) A Survey on Detection Techniques for Cryptographic Ransomware | IEEE**
 
 - **More Materials (etc)** 
-
-  - **(2016, 17p) Decryption Guide for TeslaCrypt Encrypted Files**
+- **(2016, 17p) Decryption Guide for TeslaCrypt Encrypted Files**
   - **(2016, 15p) Cerber 랜섬웨어 분석 보고서 - 소만사 악성코드 분석 센터**
-- **(2017, 14p) PETYA CYBER ATTACK - CERTMU WHITEPAPER**
-  - **(2017, 13p) NARC Report - Petya-like Ransomware Analysis**
+  - **(2017, 14p) PETYA CYBER ATTACK - CERTMU WHITEPAPER**
+- **(2017, 13p) NARC Report - Petya-like Ransomware Analysis**
   - **(2017, 21p) WannaCry-ransomware-attack - EY**
   - **(2017, 18p) ENISA-WannaCry-v1.0 - ThaiCERT**
   - **(2017, 23p) WannaCry_Report - pandasecurity**
   - **(2018, 13p) McAfee_Labs_Threat_Advisory-Ransomware-Locky**
+  - **(2018, 47p) SamSam_The Almost Six Million Dollar Ransomware - SOPHOS**
   - **(2019, 29p) How Ransomware Attacks - SOPHOS**
 
 <br/>
@@ -1217,7 +1212,71 @@ Locky 랜섬웨어는 최근에는 자바스크립트로 유포되고 있지만 
 
 <br/>
 
-#### ★ Petya
+#### ■ Petya (2016)
+
+**History**
+Petya was discovered in March 2016; Check Point noted that while it had achieved fewer infections than other ransomware active in early 2016, such as CryptoWall, it contained notable differences in operation that caused it to be "immediately flagged as the next step in ransomware evolution".
+
+Another variant of Petya discovered in May 2016 contained a secondary payload used if the malware cannot achieve administrator-level access.
+
+The name "Petya" is a reference to the 1995 James Bond film GoldenEye, wherein Petya is one of the two Soviet weapon satellites which carry a "Goldeneye"—an atomic bomb detonated in low Earth orbit to produce an electromagnetic pulse.
+
+A Twitter account that Heise suggested may have belonged to the author of the malware, named "Janus Cybercrime Solutions" after Alec Trevelyan's crime group in GoldenEye, had an avatar with an image of GoldenEye character Boris Grishenko, a Russian hacker and antagonist in the film played by Scottish actor Alan Cumming.
+
+On 30 August 2018, a regional court in Nikopol in the Dnipropetrovsk Oblast of Ukraine convicted an unnamed Ukrainian citizen to one year in prison after pleading guilty to having spread a version of Petya online.
+
+<br/>
+
+**2017 cyberattack**
+
+Main article: 2017 cyberattacks on Ukraine
+
+On 27 June 2017, a major global cyberattack began (Ukrainian companies were among the first to state they were being attacked), utilizing a new variant of Petya.
+
+On that day, Kaspersky Lab reported infections in France, Germany, Italy, Poland, the United Kingdom, and the United States, but that the majority of infections targeted Russia and Ukraine, where more than 80 companies were initially attacked, including the National Bank of Ukraine.
+
+ESET estimated on 28 June 2017 that 80% of all infections were in Ukraine, with Germany second hardest hit with about 9%. Russian president Vladimir Putin's press secretary, Dmitry Peskov, stated that the attack had caused no serious damage in Russia.
+
+Experts believed this was a politically-motivated attack against Ukraine, since it occurred on the eve of the Ukrainian holiday Constitution Day.
+
+Kaspersky dubbed this variant "NotPetya", as it has major differences in its operations in comparison to earlier variants.
+
+McAfee engineer Christiaan Beek stated that this variant was designed to spread quickly, and that it had been targeting "complete energy companies, the power grid, bus stations, gas stations, the airport, and banks".
+
+It was believed that the software update mechanism of M.E.Doc [uk]—a Ukrainian tax preparation program that, according to F-Secure analyst Mikko Hyppönen, "appears to be de facto" among companies doing business in the country—had been compromised to spread the malware.
+
+Analysis by ESET found that a backdoor had been present in the update system for at least six weeks prior to the attack, describing it as a "thoroughly well-planned and well-executed operation".
+
+The developers of M.E.Doc denied that they were entirely responsible for the cyberattack, stating that they too were victims.
+
+On 4 July 2017, Ukraine's cybercrime unit seized the company's servers after detecting "new activity" that it believed would result in "uncontrolled proliferation" of malware. Ukraine police advised M.E.Doc users to stop using the software, as it presumed that the backdoor was still present.
+
+Analysis of the seized servers showed that software updates had not been applied since 2013, there was evidence of Russian presence, and an employee's account on the servers had been compromised; the head of the units warned that M.E.Doc could be found criminally responsible for enabling the attack because of its negligence in maintaining the security of their servers.
+
+<br/>
+
+**Operation**
+Petya's payload infects the computer's master boot record (MBR), overwrites the Windows bootloader, and triggers a restart. Upon startup, the payload encrypts the Master File Table of the NTFS file system, and then displays the ransom message demanding a payment made in Bitcoin.
+
+Meanwhile, the computer's screen displays text purportedly output by chkdsk, Windows' file system scanner, suggesting that the hard drive's sectors are being repaired.
+
+The original payload required the user to grant it administrative privileges; one variant of Petya was bundled with a second payload, Mischa, which activated if Petya failed to install.
+
+Mischa is a more conventional ransomware payload that encrypts user documents, as well as executable files, and does not require administrative privileges to execute.
+
+The earlier versions of Petya disguised their payload as a PDF file, attached to an e-mail.
+
+United States Computer Emergency Response Team (US-CERT) and National Cybersecurity and Communications Integration Center (NCCIC) released Malware Initial Findings Report (MIFR) about Petya on 30 June 2017.
+
+The "NotPetya" variant used in the 2017 attack uses EternalBlue, an exploit that takes advantage of a vulnerability in Windows' Server Message Block (SMB) protocol. EternalBlue is generally believed to have been developed by the U.S. National Security Agency (NSA);
+
+it was leaked in April 2017 and was also used by WannaCry.
+
+The malware harvests passwords (using tweaked build of open-source Mimikatz) and uses other techniques to spread to other computers on the same network, and uses those passwords in conjunction with PSExec to run code on other local computers.
+
+Additionally, although it still purports to be ransomware, the encryption routine was modified so that the malware could not technically revert its changes.
+
+This characteristic, along with other unusual signs in comparison to WannaCry (including the relatively low unlock fee of US$300, and using a single, fixed Bitcoin wallet to collect ransom payments rather than generating a unique ID for each specific infection for tracking purposes), prompted researchers to speculate that this attack was not intended to be a profit-generating venture, but to damage devices quickly, and ride off the media attention WannaCry received by claiming to be ransomware.
 
 <br/>
 
@@ -1225,15 +1284,17 @@ Locky 랜섬웨어는 최근에는 자바스크립트로 유포되고 있지만 
 
 <br/>
 
-#### ★ SamSam
+#### ■ SamSam (2016)
 
-<br/>
+**SAMSAM 랜섬웨어의 등장으로 살펴보는 패칭의 중요성**
 
------
+게시일: 2016-04-26 l 작성자: Trend Micro
 
-<br/>
+사이버 범죄자들이 시스템과 네트워크의 취약점을 공격의 진입로로 이용하고 보안 취약점을 활용하여 공격을 확산하는 도구로 사용하면서, 패치 관리의 중요성이 부각되고 있습니다. 악명높은 SAMSAM 크립토 랜섬웨어의 공격이 이와 같습니다. 해당 랜섬웨어는 악성 URL 또는 스팸메일을 통해 침투하는 것이 아닌, 패치가 되지 않은 서버의 보안 취약점을 악용하는 악성 코드입니다.
 
-#### ★ DMA Locker
+지난 3월 켄터키 병원은 SAMSAM의 공격을 받아 모든 파일이 암호화 되었습니다. 네트워크로 연결된 파일도 암호화 대상에 포함되어 있었습니다. 의료 분야 공격을 시작으로, SAMSAM은 교육 분야로 확대해갔습니다. 최근에는 JBOSS 서버의 취약점을 이용한 SAMSAM 및 기타 악성 코드 공격으로 수많은 서버와 시스템이 감염되었습니다. JBOSS는 JAVA를 기반으로 하는 오픈소스 애플리케이션입니다. ‘Destiny’ 소프트웨어를 사용하는 시스템과 서버 또한 공격을 받았습니다. CISCO의 보고에 따르면, 해당 소프트웨어는 전세계 초ㆍ중ㆍ고등학교에서 광범위하게 사용되고 있습니다. Follet은 Destiny 소프트웨어 사용자를 위한 패치를 이미 발표하여 배포하고 있습니다.
+
+보고에 따르면, JexBoss 익스플로잇 툴은 시스템 원격관리를 위한 스크립트인 ‘웹쉘’을 설치하기 위해 사용됩니다. 감염된 서버는 백도어, 웹쉘, 그리고 SAMSAM에 감염됩니다. 이후 랜섬웨어는 패치 되지 않은 서버에 확산되어 encryptedRSA 파일 확장자를 추가하여 파일을 암호화합니다.
 
 <br/>
 
@@ -2446,7 +2507,7 @@ PayBreak은 이러한 키의 사용을 관찰하고 에스크로 보관하며, �
 
 <br/>
 
-#### Alma ransomware: Analysis of a new ransomware threat (and a decrypter!). | Aug 24, '16
+#### ■ Alma ransomware: Analysis of a new ransomware threat (and a decrypter!). | Aug 24, '16
 
 - https://info.phishlabs.com/blog/alma-ransomware-analysis-of-a-new-ransomware-threat-and-a-decrypter.
 
