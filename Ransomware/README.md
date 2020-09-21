@@ -24,7 +24,7 @@
   - **Sodinokibi ransomware can now encrypt open and locked files | May 10, 2020**
   - ***GANDCRAB v5.0.2 (2018)***
   - [***Ryuk (2018)***](#○-Ryuk-(2018))
-  - **Ryuk Ransomware: A Targeted Campaign Break-Down | August 20, 2018**
+    - **Ryuk Ransomware: A Targeted Campaign Break-Down | August 20, 2018**
     - **Hermes ransomware distributed to South Koreans via recent Flash zero-day**
   - [***WannaCry (2017)***](#○-WannaCry-(2017))
   - [***Cerber (2016)***](#○-Cerber-(2016))
