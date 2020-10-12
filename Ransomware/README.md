@@ -262,8 +262,6 @@ Security experts prefer to classify ransomware into families according to its co
 
 #### ○ Sodinokibi (2019)
 
-<br/>
-
 ##### ■ Sodinokibi ransomware can now encrypt open and locked files | May 10, 2020
 
 **By Lawrence Abrams**
@@ -2825,6 +2823,7 @@ We also compared the results of these proposals.
 우리는 서로 다른 접근방식을 비교하고 랜섬웨어 조치에서 얻은 입력 데이터와 그들이 양성 애플리케이션과 악성 애플리케이션 사이의 분류 결정에 도달하기 위해 사용하는 의사결정 절차를 바탕으로 알고리즘을 분류했다.
 
 이는 랜섬웨어 가족에 대한 조사나 검출 알고리즘에 대한 고립된 제안을 제공하는 대부분의 기존 연구와 비교했을 때 검출 알고리즘에 초점을 맞춘 상세 조사다.
+
 우리는 또한 이 제안들의 결과를 비교했다.
 
 <br/>
