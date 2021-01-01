@@ -1,4 +1,14 @@
-# Awesome Security of my own
+# Table
+
+- 시스템 보안
+- 네트워크 보안
+- 어플리케이션 보안
+- 정보보안 일반
+- 정보보안관리 및 법규
+
+<br/>
+
+-----
 
 - 리눅스에서 PID 1인 프로세스는 init이며, 모든 다른 프로세스들은 init 프로세스의 자손들이 된다.
 
@@ -103,29 +113,43 @@ find / -user root -perm -2000   -> SetGID
 
 이때 재조립 시에 정확한 조립을 위해 오프셋(Offset)이란 값을 더하게 되어 있는데, 이 오프셋 값을 단편화 간에 중복되도록 고의적으로 수정하거나 정상적인 오프셋 값보다 더 큰 값을 더해 그 범위를 넘어서는 오버플로우를 일으켜 시스템의 기능을 마비시켜 버리는 DoS 공격기법의 하나이다.
 
+-----
+
 ### Smurf DoS Attack
 
 공격자가 출발지 IP 주소를 목표 시스템으로 스푸핑하고 목적지 주소를 직접 브로드캐스트 주소(Directed Broadcast Address)로 설정한 Ping 메시지를 송신하고, Ping 메시지를 수신한 네트워크 내의 모든 시스템이 Ping 응답 메시지를 출발지 주소인 공격 목표 시스템으로 동시에 전송함으로서 공격 목표를 마비시킨다.
 
 ----
 
-- False Negative
+### False Negative
 
-  공격자가 실제로 시스템에 침입하였으나 침입 탐지 시스템은 이를 정상적인 동작으로 인식하여 침입을 제대로 탐지 못한 경우의 판정
+- 공격자가 실제로 시스템에 침입하였으나 침입 탐지 시스템은 이를 정상적인 동작으로 인식하여 침입을 제대로 탐지 못한 경우의 판정
 
 ----
 
 ### Ping of Death Attack
 
-Ping을 이용하여 ICMP 패킷을 정상적인 크기(65,535 bytes)보다 아주 크게 만든 것이다.
+- Ping을 이용하여 ICMP 패킷을 정상적인 크기(65,535 bytes)보다 아주 크게 만든 것이다.
 
-이렇게 크게 만들어진 패킷은 네트워크를 통해 라우팅(Routing)되어 공격 대상 네트워크에 도달하는 동안에 아주 작은 조각(Fragment)이 된다.
+- 이렇게 크게 만들어진 패킷은 네트워크를 통해 라우팅(Routing)되어 공격 대상 네트워크에 도달하는 동안에 아주 작은 조각(Fragment)이 된다.
 
-공격의 대상이 되는 시스템은 이렇게 작게 조각화된 패킷을 모두 처리해야 되기 때문에 정상적인 Ping의 경우보다 훨씬 많은 부하가 걸리게 되어 정상적인 서비스를 방해 받게 된다.
+- 공격의 대상이 되는 시스템은 이렇게 작게 조각화된 패킷을 모두 처리해야 되기 때문에 정상적인 Ping의 경우보다 훨씬 많은 부하가 걸리게 되어 정상적인 서비스를 방해 받게 된다.
 
-### Tiny Fragmentation
+-----
 
-IP 헤더보다 작은 fragment를 만들어서 침입차단시스템(방화벽)을 우회하여 내부 시스템에 침입하는 공격기법으로 DoS 공격 기법이 아닌 우회 공격 기법이다.
+### Tiny Fragment Attack (Tiny Fragmentation)
+
+- IP 헤더보다 작은 fragment를 만들어서 침입차단시스템(방화벽)을 우회하여 내부 시스템에 침입하는 공격기법으로 DoS 공격 기법이 아닌 우회 공격 기법이다.
+
+```
+A Tiny Fragment attack is IP fragmentation that is the process of breaking up a single Internet Protocol (IP) datagram into multiple packets of smaller size.
+Every network link has a characteristic size of messages that may be transmitted, called the maximum transmission unit (MTU).
+If the data packet size is made small enough to force some of a TCP packet’s TCP header fields into the second data fragment, filter rules that specify patterns for those fields will not match.
+If the filtering implementation does not enforce a minimum fragment size, a disallowed packet might be passed because it didn’t hit a match in the filter.
+STD 5, RFC 791 states that, “Every Internet module must be able to forward a datagram of 68 octets without further fragmentation.”
+This is because an Internet header may be up to 60 octets, and the minimum fragment is 8 octets.
+IP fragmentation exploits (attacks) use the fragmentation protocol within IP as an attack vector.
+```
 
 ----
 
@@ -141,7 +165,7 @@ IP 헤더보다 작은 fragment를 만들어서 침입차단시스템(방화벽)
 
 ### WPA-PSK 인증방식 취약점 (WPA/WPA2 방식)
 
-WPA-PSK를 이용하여 무선 네트워크를 구성할 때 접속/인증 패스워드를 짧게 설정하거나 추측하기 쉬운 값으로 설정할 경우 사전 공격(Dictionary Attack)을 통해 손쉽게 패스워드를 크랙할 수 있는 취약점이 있다.
+- WPA-PSK를 이용하여 무선 네트워크를 구성할 때 접속/인증 패스워드를 짧게 설정하거나 추측하기 쉬운 값으로 설정할 경우 사전 공격(Dictionary Attack)을 통해 손쉽게 패스워드를 크랙할 수 있는 취약점이 있다.
 
 ----
 
@@ -196,11 +220,15 @@ ESM은 매니저, 콘솔, 에이전트 3가지로 구성이 된다.
 
 > 단 한 대의 컴퓨터로 거대한 서버들을 다운시킬수 있는 BlackNurse 공격은 ICMP Type 3(Destination Unreachable) Code 3(Port Unreachable) 요청을 기반으로 하는 공격 기법이다.
 
+<br/>
+
 **단일 컴퓨터로 대형 서버를 다운시킬 수 있는 BlackNurse 공격**
 
 - TDC SOC(Security Operations Center)에서 ICMP 프로토콜을 기반으로 한 새로운 DoS 공격을 발견하고 이를 BlackNurse 공격이라 명함
   - BlackNurse 공격은 기존 ICMP Flood Attack의 트래픽량에 기반한 DoS 공격이 아님
   - 트래픽 속도와 초당 패킷 전송 속도가 매우 낮음에도 불구하고 대형 인터넷 링크 및 대기업 방화벽 장비를 공격하는 것이 가능함
+
+<br/>
 
 **BlackNurse**
 
@@ -209,6 +237,8 @@ ESM은 매니저, 콘솔, 에이전트 3가지로 구성이 된다.
   - 일반적인 ICMP Echo 메시지에 비해 ICMP Type 3 Code 3가 일부 방화벽에서 상당히 많은 리소스를 소비하고 있음이 밝혀짐
 - 낮은 대역폭에서도 효과적
   - 15-18 Mbit/s의 대역폭, 초당 40~50K 패킷 전송속도로 공격을 진행함에도 큰 대역폭을 지닌 (1Gbit/s) 인터넷 링크 및 방화벽의 CPU 부하를 높일 수 있음
+
+<br/>
 
 **대응방안**
 
@@ -399,14 +429,16 @@ ANSI X9와 ISO/IEC/ITU에서 X.509 v2 CRL 용으로 정의된 CRL 엔트리 확�
 >
 > 이것을 대칭키 암호의 키 배송 문제라 한다.
 
-> 키 배송 문제를 해결하기 위한 방법에는 
->
+<br/>
+
+키 배송 문제를 해결하기 위한 방법에는 
+
 > - 키의 사전 공유에 의한 방법
-> - 키 배포 센터에 의한 방법
+>- 키 배포 센터에 의한 방법
 > - Diffie-Hellman 키 교환에 의한 방법
 > - 공개키 암호에 의한 방법    
->
-> 등이 있다.
+
+등이 있다.
 
 ---
 
@@ -458,9 +490,9 @@ ANSI X9와 ISO/IEC/ITU에서 X.509 v2 CRL 용으로 정의된 CRL 엔트리 확�
 
 ### OCSP (Online Certificate Status Protocol)
 
-특정 인증서에 대한 유효성과 취소 정보를 신속하고 효율적으로 온라인상에서 알 수 있도록 구성되어 인증서의 상태에 관한 정보 조회가 가능한 프로토콜이다.
+- 특정 인증서에 대한 유효성과 취소 정보를 신속하고 효율적으로 온라인상에서 알 수 있도록 구성되어 인증서의 상태에 관한 정보 조회가 가능한 프로토콜이다.
 
-OCSP는 인증서의 상태를 조회하는 클라이언트, 클라이언트의 요구에 응답하여 상태 정보를 전달하는 OCSP 서버 그리고 일부 인증서의 상태 정보를 저장하는 CA로 구성된다.
+- OCSP는 인증서의 상태를 조회하는 클라이언트, 클라이언트의 요구에 응답하여 상태 정보를 전달하는 OCSP 서버 그리고 일부 인증서의 상태 정보를 저장하는 CA로 구성된다.
 
 ----
 
