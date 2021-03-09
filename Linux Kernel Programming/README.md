@@ -35,7 +35,7 @@ CPU 아키텍처와 32비트, 64비트에 따라서 사용자 공간과 커널 �
 
 CPU에서 제공공하는 권한을 특권 링(Privilege Ring) 또는 특권 레벨(Privilege Level)이라고 함
 
-![image-20201012135512770](Notebook.assets/image-20201012135512770.png)
+![image-20201012135512770](README.assets/image-20201012135512770.png)
 
 - 특권 레벨은 0~3까지 4가지 레벨을 제공
   - Level 0 : 커널 공간 (Core)
