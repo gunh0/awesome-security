@@ -53,10 +53,11 @@
 
 #### 2.4 The Means to Attain Dependability and Security
 
+&nbsp;지난 50년 동안 신뢰성과 보안의 다양한 속성을 달성하기 위해 많은 수단이 개발되었습니다. 이러한 평균은 네 가지 주요 범주로 그룹화할 수 있다.
 
-  지난 50년 동안 신뢰성과 보안의 다양한 속성을 달성하기 위해 많은 수단이 개발되었습니다. 이러한 평균은 네 가지 주요 범주로 그룹화할 수 있다.
-
-![image-20210310222111145](README.assets/image-20210310222111145.png)
+<p align="center">
+    <img src="README.assets/image-20210310222111145.png"/>
+</p>
 
 <br/>
 
