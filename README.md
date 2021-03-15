@@ -8,6 +8,6 @@
 
 ## Table of Contents
 
-- [Security Engineering](https://github.com/devgunho/Awesome-Security_DevGun/)
+- [Security Engineering](https://github.com/devgunho/Awesome-Security_DevGun/tree/master/Security%20Engineering)
 - [Ransomware](https://github.com/devgunho/Awesome-Security_DevGun/tree/master/Ransomware)
 
