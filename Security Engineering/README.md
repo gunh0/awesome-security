@@ -25,13 +25,13 @@
 ### Abstract (요약)
 
 
-&nbsp;이 논문은 신뢰도(reliability), 가용성(availability), 안전성(safety), 무결성(integrity), 유지 보수성(maintainability) 등과 같은 특수한 경우를 포함하는 일반적인 개념인 신뢰성(dependability)과 관련된 주요 내용들을 정의한다. 보안은 가용성 및 무결성 외에도 기밀 유지(confidentiality)에 대해서도 고려해야 한다. 그에 대해서는 기본 정의들이 먼저 주어져야 한다. 그런 다음, 신뢰성과 보안에 대한 위협(결함(faults), 오류(errors), 장애(failures))과 속성 및 달성 수단(결함 방지(fault prevention), 내결함성(fault tolerance), 장애 제거(fault removal), 장애 예측(fault forecasting))을 해결하는 추가 정의에 대한 의견을 제시하고 이를 보완한다. 최종 목표는 광범위한 상황에 걸쳐 관련성이 있는 일련의 일반적인 개념을 설명하는 것이며, 그에 따라 특정 유형의 시스템, 시스템 장애에 또는 시스템 장애의 원인을 포함하여 수많은 과학 및 기술 커뮤니티 간의 의사소통과 협력을 돕는 것이 목표이다. 🔒
+&nbsp;이 논문은 신뢰도(reliability), 가용성(availability), 안전성(safety), 무결성(integrity), 유지 보수성(maintainability) 등과 같은 특수한 경우를 포함하는 일반적인 개념인 신뢰성(dependability)과 관련된 주요 내용들을 정의한다. 보안은 가용성 및 무결성 외에도 기밀 유지(confidentiality)에 대해서도 고려해야 한다. 그에 대해서는 기본 정의들이 먼저 주어져야 한다. 그런 다음, 신뢰성과 보안에 대한 위협(결함(faults), 오류(errors), 장애(failures))과 속성 및 달성 수단(결함 방지(fault prevention), 내결함성(fault tolerance), 장애 제거(fault removal), 장애 예측(fault forecasting))을 해결하는 추가 정의에 대한 의견을 제시하고 이를 보완한다. 최종 목표는 광범위한 상황에 걸쳐 관련성이 있는 일련의 일반적인 개념을 설명하는 것이며, 그에 따라 특정 유형의 시스템, 시스템 장애에 또는 시스템 장애의 원인을 포함하여 수많은 과학 및 기술 커뮤니티 간의 의사소통과 협력을 돕는 것이 목표이다.
 
 <br/>
 
 ### 1 Introduction (서론)
 
-&nbsp;본 논문은 컴퓨팅 및 통신 시스템의 신뢰성과 보안을 다룰 때 실행되는 다양한 개념을 특정짓는 정확한 정의를 제공하는 것을 목표로 한다. 시스템 경계에 대한 불확실성이 있는 시스템에 대해 논의할 때 이러한 개념들을 명확히하는 것은 의외로 어렵다. 더욱이, 시스템의 복잡성 혹은 사양이 종종 주요 문제이며, 가능한 고장 원인 또는 실패의 결과를 결정하는 것은 매우 미묘한 프로세스가 될 수 있으며, 결함의 원인이 되는 것을 방지하기 위한 조항이 있다.
+&nbsp;본 논문은 컴퓨팅 및 통신 시스템의 신뢰성과 보안을 다룰 때 실행되는 다양한 개념을 특징짓는 정확한 정의를 제공하는 것을 목표로 한다. 시스템 경계가 모호한 시스템에 대해 논의할 때 이러한 개념들을 명확히 하는 것은 의외로 어렵다. 더욱이, 이러한 시스템의 복잡성 혹은 사양은 주요 문제일 뿐만 아니라, 장애(failures)가 발생할 수 있는 원인이나 결과를 정의하는 것은 매우 복잡미묘한 프로세스이고 장애(failures)를 유발하는 결함(faults)들을 막기 위한 조항들이 있다. 🔒
 
 &nbsp;고신뢰성(Dependability)은 신뢰성, 가용성, 안전성, 무결성, 유지 보수성 등의 일반적인 속성을 포함하는 포괄적인 개념으로 처음 소개되었다. 보안을 고려하면 가용성 무결성 외에도 기밀성에 대한 우려가 생긴다. 그런 다음 기본 정의는 추가 정의들을 통해 보완된다. 굵은 글씨체는 용어가 정의될 때 사용되며, 이탤릭체는 독자의 주의를 집중시키기 위해 사용된다.
 
@@ -752,5 +752,215 @@
     <img src="README.assets/BasicConceptsAndTaxonomyOfDependableAndSecureComputingFig22.png"/>
     <div align="center">Fig. 22. A refined dependability and security tree.</div>
 </p>
-
 <br/>
+
+### Index of Definitions
+
+```
+Accidental fault 3.2.1
+Accountability 4.3
+Active fault 2.2
+Adaptive maintenance 3.1
+Atomic 2.1
+Augmentive maintenance 3.1
+Authenticity 4.3
+Autonomic computing 4.3
+Availability 2.3
+Back-to-back testing 5.3.1
+Backward recovery 5.2.1
+Behavior 2.1
+Byzantine failure 3.3.1
+Catastrophic failure 3.3.1
+Commission fault 3.2.3
+Common-mode failure 3.5
+Compensation 5.2.1
+Component 2.1
+Computer-based systems 2
+Concurrent detection 5.2.1
+Confidentiality 2.3
+Configuration fault 3.2.3
+Consistency 3.3.1
+Consistent failure 3.3.1
+Content failure 3.3.1
+Correct service 2.2
+Corrective maintenance 3.1
+Coverage 5.5
+Degraded mode 2.2
+Deliberate fault 3.2.1
+Denial of service 3.2.4
+Dependability & security analysis 5.5
+Dependability & security benchmark 5.4
+Dependability & security failure 3.3.3
+Dependability & security provision 5.5
+Dependability & security specification 2.3
+Dependability 2.3
+Dependence 2.3
+Design diversity 5.2.2
+Design for testability 5.3.1
+Design for verifiability 5.3.1 
+Detectability 3.3.1
+Detected error 3.4
+Detection and recovery 5.2.1
+Deterministic testing 5.3.1
+Development environment 3.1
+Development failure 3.3.2
+Development fault 3.2.1
+Development phase 3.1
+Diagnosis 5.2.1	
+Dormant fault 2.2	
+Downgrading 3.3.2	
+Dynamic verification 5.3.1
+Early timing failure 3.3.1
+Elusive fault 3.5
+Environment 2.1
+Erratic failure 3.3.1
+Error 2.2 
+Error detection and system recovery 5.2.1
+Error handling 5.2.1
+External fault 3.2.1
+External state 2.1
+Fail-controlled system 3.3.1
+Fail-halt system 3.3.1
+Fail-passive system 3.3.1
+Fail-safe system 3.3.1
+Fail-silent system 3.3.1
+Fail-stop system 3.3.1
+Failure 2.2 
+Failure domain 3.3.1
+Failure severity 2.2
+False alarm 3.3.1
+Fault 2.2	Fault acceptance 5.5
+Fault activation 3.5
+Fault activation reproducibility 3.5
+Fault avoidance 5.5
+Fault forecasting 2.4	
+Fault handling 5.2.1
+Fault injection 5.3.1
+Fault masking 5.2.1	
+Fault prevention 2.4
+Fault removal 2.4	
+Fault tolerance 2.4	
+Forward recovery 5.2.1
+Function 2.1	
+Functional specification 2.1
+Functional testing 5.3.1
+Golden unit 5.3.1	
+Halt 3.3.1		
+Halt failure 3.3.1
+Hard fault 3.5
+Hardware fault 3.2.1
+High Confidence 4.4 
+Human-made fault 3.2.1
+Incompetence fault 3.2.1
+Inconsistent failure 3.3.1
+Independent faults 3.5
+Integrity 2.3	
+Interaction fault 3.2.1
+Intermittent fault 3.5
+Internal fault 3.2.1	
+Internal state 2.1	
+Intrusion attempt 3.2.4
+Isolation 5.2.1	
+Late timing failure 3.3.1
+Latent error 3.4
+Logic bomb 3.2.4
+Maintainability 2.3
+Maintenance 3.1	
+Malicious fault 3.2.1 
+Malicious logic fault 3.2.4
+Masking 5.2.1 
+Masking and recovery 5.2.1
+Minor failure 3.3.1
+Multiple faults 3.5	
+Multiple related errors 3.4
+Mutation testing 5.3.1
+Natural fault 3.2.1	
+Nondeliberate fault 3.2.1
+Nonmalicious fault 3.2.1
+Nonregression verification 5.3.1
+Nonrepudiability 4.3 
+Omission 3.2.3
+Omission fault 3.2.3
+Operational fault 3.2.1 
+Operational testing 5.4
+Oracle problem 5.3.1
+Ordinal evaluation 5.4
+Overrun 3.3.2
+Partial development failure 3.3.2
+Partial failure 2.2
+Penetration testing 5.3.1
+Performability 5.4
+Permanent fault 3.2.1
+Physical fault 3.2.1
+Preemptive detection 5.2.1
+Preventive maintenance 3.1
+Probabilistic evaluation 5.4
+Provider 2.1 
+Qualitative evaluation 5.4
+Quantitative evaluation 5.4
+Random testing 5.3.1
+Reconfiguration 5.2.1
+Reconfiguration fault 3.2.3
+Recovery-oriented computing 5.2.2
+Reinitialization 5.2.1
+Related faults 3.5 
+Reliability 2.3  Resilience 5.2.2
+Robustness 4.3
+Rollback 5.2.1
+Rollforward 5.2.1
+Safety 2.3 
+Security 2.3, 4.3
+Security policy 4.3
+Self-checking component 5.2.2
+Self-healing 5.2.2
+Self-repair 5.2.2
+Service 2.1
+Service delivery 3.1
+Service failure 2.2 
+Service failure mode 2.2
+Service interface 2.1
+Service outage 2.2
+Service restoration 2.2
+Service shutdown 3.1
+Signaled failure 3.3.1
+Silence 3.3.1 
+Silent failure 3.3.1
+Single error 3.4
+Single fault 3.5
+Soft error 3.5
+Soft fault 3.5  
+Software ageing 3.2.3
+Software fault 3.2.1
+Software rejuvenation 5.2.1
+Solid fault 3.5
+Static verification 5.3.1
+Statistical testing 5.3.1
+Structural testing 5.3.1
+Structure 2.1
+Survivability 4.4
+Symbolic execution 5.3.1
+System 2.1
+System boundary 2.1 
+System life cycle 3.1
+System recovery 5.2.1
+Testing 5.3.1 
+Timing failure 3.3.1
+Total state 2.1 
+Transient fault 3.2.1
+Transition 2.2
+Trapdoor 3.2.4
+Trojan horse 3.2.4	Trust 2.3
+Trustworthiness 4.4
+Unsignaled failure 3.3.1
+Use environment 3.1
+Use interface 2.1
+Use phase 3.1
+User 2.1
+Validation 5.3.1
+Verification 5.3.1
+Virus 3.2.4
+Vulnerability 2.2
+Worm 3.2.4
+Zombie 3.2.4
+```
+
