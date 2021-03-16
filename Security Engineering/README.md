@@ -25,7 +25,7 @@
 ### Abstract (요약)
 
 
-&nbsp;이 논문은 신뢰도(reliability), 가용성(availability), 안전성(safety), 무결성(integrity), 유지 보수성(maintainability) 등과 같은 특수한 경우를 포함하는 일반적인 개념인 신뢰성(dependability)과 관련된 주요 내용들을 정의한다. 보안은 가용성 및 무결성 외에도 기밀 유지(confidentiality)에 대해서도 고려해야 한다. 그에 대해서는 기본 정의들이 먼저 주어져야 한다. 그런 다음, 신뢰성과 보안에 대한 위협(결함(faults), 오류(errors), 장애(failures))과 속성 및 달성 수단(결함 방지(fault prevention), 내결함성(fault tolerance), 장애 제거(fault removal), 장애 예측(fault forecasting))을 해결하는 추가 정의에 대한 의견을 제시하고 이를 보완한다. 최종 목표는 광범위한 상황에 걸쳐 관련성이 있는 일련의 일반적인 개념을 설명하는 것이며, 그에 따라 특정 유형의 시스템, 시스템 장애에 또는 시스템 장애의 원인을 포함하여 수많은 과학 및 기술 커뮤니티 간의 의사소통과 협력을 돕는 것이 목표이다.
+&nbsp;이 논문은 신뢰도(reliability), 가용성(availability), 안전성(safety), 무결성(integrity), 유지 보수성(maintainability) 등과 같은 특수한 경우를 포함하는 일반적인 개념인 신뢰성(dependability)과 관련된 주요 내용들을 정의한다. 보안은 가용성 및 무결성 외에도 기밀 유지(confidentiality)에 대해서도 고려해야 한다. 그에 대해서는 기본 정의들이 먼저 주어져야 한다. 그런 다음, 신뢰성과 보안에 대한 위협(결함(faults), 오류(errors), 장애(failures))과 속성 및 달성 수단(결함 방지(fault prevention), 내결함성(fault tolerance), 결함 제거(fault removal), 결함 예측(fault forecasting))을 해결하는 추가 정의에 대한 의견을 제시하고 이를 보완한다. 최종 목표는 광범위한 상황에 걸쳐 관련성이 있는 일련의 일반적인 개념을 설명하는 것이며, 그에 따라 특정 유형의 시스템, 시스템 장애에 또는 시스템 장애의 원인을 포함하여 수많은 과학 및 기술 커뮤니티 간의 의사소통과 협력을 돕는 것이 목표이다.
 
 <br/>
 
