@@ -415,6 +415,51 @@
 
 #### 3.5 The Pathology of Failure: Relationship between Faults, Errors, and Failures
 
+오류, 오류 및 실패의 생성 및 표시 메커니즘은 그림 10에 설명되어 있으며 다음과 같이 요약됩니다:
+
+<p align="center">
+    <img src="README.assets/BasicConceptsAndTaxonomyOfDependableAndSecureComputingFig10.png"/>
+    <div align="center">Fig. 10. Error propagation.</div>
+</p>
+
+1. 오류가 발생하면 오류가 활성화됩니다. 그렇지 않으면 휴면 상태입니다. 활성 오류는 1) 이전에 휴면 상태 였고 계산 프로세스 또는 환경 조건에 의해 활성화 된 내부 오류 또는 2) 외부 오류입니다. 오류 활성화는 휴면 오류를 활성화시키는 구성 요소에 입력 (활성화 패턴)을 적용하는 것입니다. 대부분의 내부 결함은 휴면 상태와 활성 상태 사이를 순환합니다.
+2. 주어진 구성 요소 내에서 오류 전파 (즉, 내부 전파)는 계산 프로세스에 의해 발생합니다. 오류는 연속적으로 다른 오류로 변환됩니다. A 컴포넌트에서 A에서 서비스를받는 컴포넌트 B 로의 오류 전파 (즉, 외부 전파)는 내부 전파를 통해 컴포넌트 A의 서비스 인터페이스에 오류가 도달했을 때 발생한다. 이때 A가 B에게 전달한 서비스가 부정확하게되고, A의 후속 서비스 실패는 B에 외부 결함으로 나타나고 사용 인터페이스를 통해 B로 오류를 전파합니다.
+3. 서비스 실패는 오류가 서비스 인터페이스에 전파되어 시스템에서 제공하는 서비스가 올바른 서비스에서 벗어나게하는 경우 발생합니다. 구성 요소의 오류로 인해 구성 요소가 포함 된 시스템에 영구적 또는 일시적인 오류가 발생합니다. 시스템의 서비스 실패는 주어진 시스템에서 서비스를받는 다른 시스템에 영구적이거나 일시적인 외부 오류를 유발합니다.
+
+&nbsp;이러한 메커니즘을 통해 그림 11에 표시된 것처럼 "위협 체인"이 완료 될 수 있습니다.이 체인의 화살표는 결함, 오류 및 실패 간의 인과 관계를 나타냅니다. 일반적으로 해석되어야합니다. 전파에 의해 실패가 발생하기 전에 여러 오류가 생성 될 수 있습니다. 위에 나열된 메커니즘에서 전파, 따라서이 체인의 인스턴스화가 구성 요소 또는 시스템 간의 상호 작용, 구성 요소를 시스템으로 구성, 시스템 생성 또는 수정을 통해 발생할 수 있음을 강조할 가치가 있습니다.
+
+<p align="center">
+    <img src="README.assets/BasicConceptsAndTaxonomyOfDependableAndSecureComputingFig11.png"/>
+    <div align="center">Fig. 11. The fundamental chain of dependability and security threats.</div>
+</p>
+
+&nbsp;결함 병리의 몇 가지 예시적인 예가 그림 12에 나와 있습니다. 이러한 예에서 결함 휴면 상태는 결함, 주어진 시스템의 활용도 등에 따라 상당히 달라질 수 있음을 쉽게 이해할 수 있습니다.
+
+<p align="center">
+    <img src="README.assets/BasicConceptsAndTaxonomyOfDependableAndSecureComputingFig12.png"/>
+    <div align="center">Fig. 12. Examples illustrating fault pathology.</div>
+</p>
+
+&nbsp;하나 이상의 오류를 일으킨 오류의 활성화 패턴을 식별하는 능력은 오류 활성화 재현성입니다. 결함은 활성화 재현성에 따라 분류 할 수 있습니다. 활성화가 재현 가능한 결함을 솔리드 또는 하드 결함이라고하는 반면, 활성화가 체계적으로 재현 할 수없는 결함은 파악하기 어렵거나 부드러운 결함입니다. 크고 복잡한 소프트웨어에 남아있는 대부분의 개발 결함은 파악하기 어려운 결함입니다. 활성화 조건이 내부 상태와 외부 요청의 복잡한 조합에 의존 할 정도로 충분히 복잡합니다. 드물게 발생하고 재현하기 매우 어려울 수 있습니다 [23]. 파악하기 어려운 결함의 다른 예는 다음과 같습니다:
+
+- 반도체 메모리의 "패턴에 민감한"결함, 하드웨어 구성 요소의 매개 변수 변경 (온도 변화의 영향, 기생 정전 용량으로 인한 타이밍 지연 등).
+- 시스템 부하가 특정 수준을 초과 할 때 발생하는 하드웨어 또는 소프트웨어에 영향을 미치는 조건 (예 : 한계 타이밍 및 동기화).
+
+&nbsp;파악하기 어려운 개발 결함과 일시적인 물리적 결함의 표현의 유사성은 두 클래스가 간헐적 결함으로 함께 그룹화되도록합니다. 간헐적 인 오류로 인해 발생하는 오류를 일반적으로 소프트 오류라고합니다. 그림 13은 이 논의를 요약합니다.
+
+<p align="center">
+    <img src="README.assets/BasicConceptsAndTaxonomyOfDependableAndSecureComputingFig13.png"/>
+    <div align="center">Fig. 13. Solid versus intermittent faults.</div>
+</p>
+
+&nbsp;Situations involving multiple faults and/or failures are frequently encountered. System failures often turn out on later examination to have been caused by errors that are due to a number of different coexisting faults. Given a system with defined boundaries, a single fault is a fault caused by one adverse physical event or one harmful human action. Multiple faults are two or more concurrent, overlapping, or sequential single faults whose consequences, i.e., errors, overlap in time, that is, the errors due to these faults are concurrently present in the system. Consideration of multi-ple faults leads one to distinguish 1) independent faults, that are attributed to different causes, and 2) related faults, that are attributed to a common cause. Related faults generally cause similar errors, i.e., errors that cannot be distinguished by whatever detection mechanisms are being employed, whereas independent faults usually cause distinct errors. However, it may happen that independent faults (especially omissions) lead to similar errors [6], or that related faults lead to distinct errors. The failures caused by similar errors are common-mode failures.
+
+&nbsp;"위협", "오류", "오류"및 "실패"라는 단어 또는 레이블에 대한 세 가지 추가 설명:
+
+1. 일반적으로 결함, 오류 및 실패를 지칭하는 위협의 사용은 일반적으로 잠재적 인 개념을 유지하는 보안에서 일반적인 사용보다 더 넓은 의미를 갖습니다. 우리의 용어로는 이러한 잠재적 측면 (예 : 아직 활성화되지 않은 오류, 서비스 장애에 대한 의존성 손상 없음) 및 실현 측면 (예 : 활성 오류, 존재하는 오류, 발생하는 서비스 오류)이 모두 있습니다. 보안 측면에서 악의적 인 외부 결함은 공격입니다.
+2. 이 문서에서 오류, 오류 및 실패를 독점적으로 사용한다고해서 특정 위협 등급을 간략하고 분명하게 지정하는 특수한 상황에서의 사용이 배제되지는 않습니다. 이는 특히 오류 (예 : 버그, 결함, 결함, 결함, 정오표) 및 오류 (예 : 고장, 오작동, 서비스 거부)에 적용됩니다.
+3. 특정 용어의 오류, 오류 및 실패로 이루어진 할당은 1) 오류 방지, 허용 오차 및 진단, 2) 오류 감지 및 수정, 3) 오류율과 같은 일반적인 사용을 단순히 고려합니다.
+
 <br/>
 
 ### 4 Dependability, Security, And Their Attributes
