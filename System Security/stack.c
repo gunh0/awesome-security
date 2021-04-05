@@ -5,7 +5,7 @@
 #include <string.h>
 
 #ifndef BUF_SIZE
-#define BUF_SIZE 24
+#define BUF_SIZE 384
 #endif
 
 int bof(char *str)
