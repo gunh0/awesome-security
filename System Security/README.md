@@ -47,10 +47,13 @@ This vulnerability arises due to the mixing of the storage for data (e.g. buffer
     kernel.randomize_va_space = 0
     ```
     
-  - <p align="center">
+    <p align="center">
         <img src="README.assets/BufferOverflow0.png"/>
         <div align="center">kernel.randomize_va_space = 0</div>
     </p>
+    
+    <br/>
+    
 
 - **The StackGuard Protection Scheme**
 
@@ -160,6 +163,7 @@ $ gcc -o call_shellcode -z execstack -fno-stack-protector call_shellcode.c
     <img src="README.assets/BufferOverflow-finding.png"/>
     <div align="center">Finding the address of the memory.</div>
 </p>
+<br/>
 
 위 그림에서 처럼 `buffer[]` 배열의 주소를 알아낼 수 잇다면, return address가 저장된 위치를 계산할 수 있다.
 
@@ -173,6 +177,8 @@ $ gcc -o call_shellcode -z execstack -fno-stack-protector call_shellcode.c
     <img src="README.assets/BufferOverflow-storing.png"/>
     <div align="center">Storing an long integer in buffer.</div>
 </p>
+<br/>
+
 
 ```c
 /* Vunlerable program: stack.c */
@@ -232,6 +238,7 @@ $ r
     <img src="README.assets/BufferOverflow2.png"/>
     <div align="center">Run debugger</div>
 </p>
+<br/>
 
 Now in order to find the return address we need to find the address of **ebp**.
 
@@ -245,7 +252,6 @@ Finally, we calculate offset.
     <img src="README.assets/BufferOverflow3.png"/>
     <div align="center">Print address</div>
 </p>
-
 <br/>
 
 ```c
@@ -305,7 +311,6 @@ root
     <img src="README.assets/BufferOverflow4.png"/>
     <div align="center">Exploit Success</div>
 </p>
-
 <br/>
 
 <br/>
@@ -335,3 +340,5 @@ root
     <img src="README.assets/BufferOverflow5.png"/>
     <div align="center">Turn on the Ubuntu's Address Randomization</div>
 </p>
+
+<br/>
