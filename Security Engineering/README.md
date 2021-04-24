@@ -12,7 +12,7 @@
 
 <br/>
 
-## (2004.10) Basic Concepts and Taxononmy of Dependable and Secure Computing - IEEE
+## # (2004.10) Basic Concepts and Taxononmy of Dependable and Secure Computing - IEEE
 
 > https://ieeexplore.ieee.org/document/1335465
 >

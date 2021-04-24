@@ -8,6 +8,9 @@
 
 ## Table of Contents
 
+- Security Basic Concept Notes
 - [Security Engineering](https://github.com/devgunho/Awesome-Security_DevGun/tree/master/Security%20Engineering)
+- System Security
+- Web Hacking
 - [Ransomware](https://github.com/devgunho/Awesome-Security_DevGun/tree/master/Ransomware)
 

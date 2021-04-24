@@ -2,7 +2,7 @@
 
 <br/>
 
-## SEED:
+## # SEED:
 
 ### Developing Instructional Laboratories for Computer SEcurity EDucation
 
@@ -20,7 +20,7 @@ The goal of our labs is to help students focus on (1) grasping security principl
 
 <br/>
 
-## Buffer Overflow Vulnerability Lab
+## # Buffer Overflow Vulnerability Lab
 
 ### Overview
 

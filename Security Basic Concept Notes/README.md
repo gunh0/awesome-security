@@ -1,4 +1,4 @@
-# Table
+# Table of Contents
 
 - 시스템 보안
 - 네트워크 보안
