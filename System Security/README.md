@@ -340,5 +340,142 @@ root
     <img src="README.assets/BufferOverflow5.png"/>
     <div align="center">Turn on the Ubuntu's Address Randomization</div>
 </p>
+<br/>
+
+<br/>
+
+## # Format String Vulnerability Lab
+
+### Overview
+
+The` printf()` function in C is used to print out a string according to a format.
+
+Its first argument is called format string, which defines how the string should be formatted.
+
+Format strings use placeholders marked by the `%` character for the `printf()` function to fill in data during the printing.
+
+The use of format strings is not only limited to the `printf()` function; many other functions, such as `sprintf()`, `fprintf()`, and `scanf()`, also use format strings.
+
+Some programs allow users to provide the entire or part of the contents in a format string.
+
+ If such contents are not sanitized, malicious users can use this opportunity to get
+the program to run arbitrary code.
+
+A problem like this is called format string vulnerability.
+
+<br/>
+
+<br/>
+
+<p align="center">
+    <img src="README.assets/FormatStringVulnerability1.png"/>
+    <div align="center">kernel.randomize_va_space=0</div>
+</p>
+
+<br/>
+
+<br/>
+
+### The Vulnerable Program
+
+You are given a vulnerable program that has a format string vulnerability.
+
+This program is a server program.
+
+When it runs, it listens to UDP port 9090.
+
+Whenever a UDP packet comes to this port, the program gets the data and invokes `myprintf()` to print out the data.
+
+The server is a root daemon, i.e., it runs with the root privilege.
+
+Inside the `myprintf()` function, there is a format string vulnerability.
+
+We will exploit this vulnerability to gain the root privilege.
+
+> The vulnerable server program `server.c` 
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <netinet/ip.h>
+
+#define PORT 9090
+/* Changing this size will change the layout of the stack.
+* We have added 2 dummy arrays: in main() and myprintf().
+* Instructors can change this value each year, so students
+* won’t be able to use the solutions from the past.
+* Suggested value: between 0 and 300 */
+#ifndef DUMMY_SIZE
+#define DUMMY_SIZE 120
+#endif
+
+char *secret = "A secret message\n";
+unsigned int target = 0x11223344;
+void myprintf(char *msg)
+{
+    uintptr_t framep;
+    // Copy the ebp value into framep, and print it out
+    asm("movl %%ebp, %0"
+        : "=r"(framep));
+    printf("The ebp value inside myprintf() is: 0x%.8x\n", framep);
+    /* Change the size of the dummy array to randomize the parameters
+for this lab. Need to use the array at least once */
+    char dummy[DUMMY_SIZE];
+    memset(dummy, 0, DUMMY_SIZE);
+    // This line has a format string vulnerability
+    printf(msg);
+    printf("The value of the ’target’ variable (after): 0x%.8x\n", target);
+}
+
+void main()
+{
+    struct sockaddr_in server;
+    struct sockaddr_in client;
+    int clientLen;
+    char buf[1500];
+    /* Change the size of the dummy array to randomize the parameters
+for this lab. Need to use the array at least once */
+    char dummy[DUMMY_SIZE];
+    memset(dummy, 0, DUMMY_SIZE);
+    printf("The address of the input array: 0x%.8x\n", (unsigned)buf);
+    int sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+    memset((char *)&server, 0, sizeof(server));
+    server.sin_family = AF_INET;
+    server.sin_addr.s_addr = htonl(INADDR_ANY);
+    server.sin_port = htons(PORT);
+    if (bind(sock, (struct sockaddr *)&server, sizeof(server)) < 0)
+        perror("ERROR on binding");
+    while (1)
+    {
+        bzero(buf, 1500);
+        recvfrom(sock, buf, 1500 - 1, 0,
+                 (struct sockaddr *)&client, &clientLen);
+        myprintf(buf);
+    }
+    close(sock);
+}
+
+```
+
+```bash
+$ gcc -DUMMY_SIZE=120 -z execstack -o server server.c
+```
+
+<br/>
+
+<p align="center">
+    <img src="README.assets/FormatStringVulnerability2.png"/>
+    <div align="center">warning: format not a string literal and no format arguments</div>
+</p>
+
+<br/>
+
+<p align="center">
+    <img src="README.assets/FormatStringVulnerability3.png"/>
+    <div align="center">run server</div>
+</p>
 
 <br/>
