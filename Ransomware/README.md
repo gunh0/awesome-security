@@ -8,7 +8,7 @@
 
 <br/>
 
-## INDEX
+## Table of Contents
 
 ### **Ransomware Revealed**
 
