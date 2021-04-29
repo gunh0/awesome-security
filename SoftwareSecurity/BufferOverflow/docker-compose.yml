@@ -1,0 +1,8 @@
+version: '3'
+services:
+  myapp:
+    build:
+      context: .
+    container_name: badfile-generator
+    volumes:
+      - ./:/app  # Mount the current directory into the /app directory in the container
