@@ -7,5 +7,4 @@ services:
             dockerfile: Dockerfile
         container_name: return-to-lib-attack
         volumes:
-            - ./:/app/results
-        # Add additional configuration or settings as needed
+            - ./:/app

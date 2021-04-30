@@ -4,12 +4,12 @@ FROM ubuntu:18.04
 # Set the working directory inside the container
 WORKDIR /app
 
-# Install Python3
+# Install Python3 and xxd
 RUN apt-get update && \
     apt-get install -y python3
 
 # Copy the exploit script (exploit.py) into the container
 COPY exploit.py /app/exploit.py
 
-# Specify the entry point for the container
-CMD ["sh", "-c", "echo 'Exploit script is running...'; python3 exploit.py; echo 'Exploit script finished.'"]
+# CMD specifies the default command to run when the container starts
+CMD ["python3", "/app/exploit.py"]
