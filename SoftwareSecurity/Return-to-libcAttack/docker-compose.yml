@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+    return-to-lib-attack:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: return-to-lib-attack
+        volumes:
+            - ./:/app/results
+        # Add additional configuration or settings as needed
